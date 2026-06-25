@@ -24,7 +24,8 @@ def is_network_path(value: str) -> bool:
 
 def has_path_traversal(value: str) -> bool:
     """Return true when a path contains parent-directory traversal segments."""
-    return any(part == ".." for part in Path(value).parts)
+    normalized = value.replace("\\", "/")
+    return any(part == ".." for part in Path(normalized).parts)
 
 
 def validate_local_input_path(value: str) -> Path:
