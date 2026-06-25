@@ -79,7 +79,8 @@ def main() -> int:
     errors: list[str] = []
     _check_files_exist(IMPORTANT_DOCS, errors)
     _check_files_exist(EXAMPLE_REPORTS, errors)
-    if errors:
+    has_errors = bool(errors)
+    if has_errors:
         _print_errors(errors)
         return 1
 
