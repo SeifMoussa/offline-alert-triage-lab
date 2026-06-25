@@ -89,8 +89,7 @@ def _redact_value(value: Any, policy: RedactionPolicy, counters: _Counters) -> A
         return [_redact_value(item, policy, counters) for item in value]
     if isinstance(value, set):
         return [
-            _redact_value(item, policy, counters)
-            for item in sorted(value, key=lambda item: repr(item))
+            _redact_value(item, policy, counters) for item in sorted(value, key=repr)
         ]
     if isinstance(value, str):
         return _redact_string(value, policy, counters)
