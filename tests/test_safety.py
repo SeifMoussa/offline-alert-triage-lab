@@ -18,10 +18,10 @@ def test_safety_summary_includes_required_boundaries() -> None:
 
 
 def test_safety_constants_include_allowed_ranges_and_domains() -> None:
-    assert "10.0.0.0/8" in ALLOWED_SYNTHETIC_IP_RANGES
-    assert "192.0.2.0/24" in ALLOWED_SYNTHETIC_IP_RANGES
-    assert "example.com" in ALLOWED_SAFE_DOMAINS
-    assert ".test" in ALLOWED_SAFE_DOMAINS
+    expected_ranges = {"10.0.0.0/8", "192.0.2.0/24"}
+    expected_domains = {"example.com", ".test"}
+    assert expected_ranges.issubset(set(ALLOWED_SYNTHETIC_IP_RANGES))
+    assert expected_domains.issubset(set(ALLOWED_SAFE_DOMAINS))
 
 
 def test_forbidden_capability_keywords_are_declared() -> None:

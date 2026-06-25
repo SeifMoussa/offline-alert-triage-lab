@@ -4,6 +4,18 @@ from __future__ import annotations
 
 from triage_lab.models.report import SecurityReport
 
+SAFETY_DISCLAIMER = (
+    "This report is generated from synthetic local alert data only. The pipeline "
+    "is offline-only, deterministic, rule-based, and does not use external AI "
+    "APIs, LLM calls, network calls, external MITRE APIs, or external threat "
+    "intelligence."
+)
+LIMITATIONS_NETWORK_NOTE = (
+    "- The report does not perform live scanning, enrichment, network calls, "
+    "external MITRE API calls, external threat intelligence, LLM calls, or "
+    "external AI API calls."
+)
+
 
 def render_markdown_report(report: SecurityReport) -> str:
     """Render a deterministic analyst-readable Markdown report."""
@@ -19,10 +31,7 @@ def render_markdown_report(report: SecurityReport) -> str:
         "",
         "## Safety Disclaimer",
         "",
-        "This report is generated from synthetic local alert data only. The "
-        "pipeline is offline-only, deterministic, rule-based, and does not use "
-        "external AI APIs, LLM calls, network calls, external MITRE APIs, or "
-        "external threat intelligence.",
+        SAFETY_DISCLAIMER,
         "",
         "## Report Metadata",
         "",
@@ -167,9 +176,7 @@ def render_markdown_report(report: SecurityReport) -> str:
             "",
             "- This report uses synthetic lab data only.",
             "- The AI-assisted behavior is deterministic rule-based logic.",
-            "- The report does not perform live scanning, enrichment, network "
-            "calls, external MITRE API calls, external threat intelligence, "
-            "LLM calls, or external AI API calls.",
+            LIMITATIONS_NETWORK_NOTE,
             "- Final interpretation should stay within the offline lab scenario.",
             "",
         ]
