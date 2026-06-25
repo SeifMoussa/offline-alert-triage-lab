@@ -1,0 +1,1026 @@
+{
+  "errors": [],
+  "explained_alerts": [
+    {
+      "alert_id": "alert-0001",
+      "escalation_required": false,
+      "event_type": "failed_login",
+      "evidence_points": [
+        "Alert alert-0001 is a synthetic failed_login event.",
+        "Final severity is LOW.",
+        "Mapped MITRE technique IDs: T1110."
+      ],
+      "final_severity": "LOW",
+      "generated_by": "deterministic_template_engine",
+      "mitre_context": "This maps to MITRE ATT&CK technique T1110 Brute Force under Credential Access.",
+      "mitre_tactic": "Credential Access",
+      "mitre_technique_id": "T1110",
+      "modifiers_referenced": [],
+      "playbook_id": "TRIAGE-AUTH-LOW",
+      "reasoning": "The final severity is LOW. The classifier used the local base severity for failed_login and applied no severity modifiers. This maps to MITRE ATT&CK technique T1110 Brute Force under Credential Access.",
+      "suggested_priority": "routine",
+      "summary": "A synthetic failed_login alert was reviewed by the deterministic triage pipeline.",
+      "template_id": "TPL-GENERIC",
+      "triage_steps": [
+        {
+          "description": "Review the local synthetic alert fields for username, source IP, destination IP, and count.",
+          "order": 10,
+          "safety_note": "Use only the provided local fixture data.",
+          "step_id": "TRIAGE-AUTH-LOW",
+          "title": "Review synthetic authentication context"
+        }
+      ]
+    },
+    {
+      "alert_id": "alert-0002",
+      "escalation_required": false,
+      "event_type": "failed_login",
+      "evidence_points": [
+        "Alert alert-0002 is a synthetic failed_login event.",
+        "Final severity is LOW.",
+        "Mapped MITRE technique IDs: T1110."
+      ],
+      "final_severity": "LOW",
+      "generated_by": "deterministic_template_engine",
+      "mitre_context": "This maps to MITRE ATT&CK technique T1110 Brute Force under Credential Access.",
+      "mitre_tactic": "Credential Access",
+      "mitre_technique_id": "T1110",
+      "modifiers_referenced": [],
+      "playbook_id": "TRIAGE-AUTH-LOW",
+      "reasoning": "The final severity is LOW. The classifier used the local base severity for failed_login and applied no severity modifiers. This maps to MITRE ATT&CK technique T1110 Brute Force under Credential Access.",
+      "suggested_priority": "routine",
+      "summary": "A synthetic failed_login alert was reviewed by the deterministic triage pipeline.",
+      "template_id": "TPL-GENERIC",
+      "triage_steps": [
+        {
+          "description": "Review the local synthetic alert fields for username, source IP, destination IP, and count.",
+          "order": 10,
+          "safety_note": "Use only the provided local fixture data.",
+          "step_id": "TRIAGE-AUTH-LOW",
+          "title": "Review synthetic authentication context"
+        }
+      ]
+    },
+    {
+      "alert_id": "alert-0003",
+      "escalation_required": true,
+      "event_type": "brute_force",
+      "evidence_points": [
+        "Alert alert-0003 is a synthetic brute_force event.",
+        "Final severity is CRITICAL.",
+        "Mapped MITRE technique IDs: T1110."
+      ],
+      "final_severity": "CRITICAL",
+      "generated_by": "deterministic_template_engine",
+      "mitre_context": "This maps to MITRE ATT&CK technique T1110 Brute Force under Credential Access.",
+      "mitre_tactic": "Credential Access",
+      "mitre_technique_id": "T1110",
+      "modifiers_referenced": [],
+      "playbook_id": "TRIAGE-BRUTE-HIGH",
+      "reasoning": "The final severity is CRITICAL. The classifier started from the configured base severity for brute_force and applied no severity modifiers. This maps to MITRE ATT&CK technique T1110 Brute Force under Credential Access.",
+      "suggested_priority": "immediate",
+      "summary": "Repeated authentication failures were detected in the synthetic dataset for a lab account and host.",
+      "template_id": "TPL-BRUTE-FORCE",
+      "triage_steps": [
+        {
+          "description": "Compare related synthetic alerts for repeated username, host, and source IP patterns.",
+          "order": 20,
+          "safety_note": "Do not test credentials or contact any external service.",
+          "step_id": "TRIAGE-BRUTE-HIGH",
+          "title": "Compare repeated authentication alerts"
+        }
+      ]
+    },
+    {
+      "alert_id": "alert-0004",
+      "escalation_required": true,
+      "event_type": "brute_force",
+      "evidence_points": [
+        "Alert alert-0004 is a synthetic brute_force event.",
+        "Final severity is CRITICAL.",
+        "Triggered modifier IDs: MOD-SENSITIVE-DEST-PORT, MOD-PRIVILEGED-USERNAME.",
+        "Mapped MITRE technique IDs: T1110."
+      ],
+      "final_severity": "CRITICAL",
+      "generated_by": "deterministic_template_engine",
+      "mitre_context": "This maps to MITRE ATT&CK technique T1110 Brute Force under Credential Access.",
+      "mitre_tactic": "Credential Access",
+      "mitre_technique_id": "T1110",
+      "modifiers_referenced": [
+        "MOD-SENSITIVE-DEST-PORT",
+        "MOD-PRIVILEGED-USERNAME"
+      ],
+      "playbook_id": "TRIAGE-BRUTE-HIGH",
+      "reasoning": "The final severity is CRITICAL. The classifier started from the configured base severity for brute_force and applied modifier(s) MOD-SENSITIVE-DEST-PORT, MOD-PRIVILEGED-USERNAME. This maps to MITRE ATT&CK technique T1110 Brute Force under Credential Access.",
+      "suggested_priority": "immediate",
+      "summary": "Repeated authentication failures were detected in the synthetic dataset for a lab account and host.",
+      "template_id": "TPL-BRUTE-FORCE",
+      "triage_steps": [
+        {
+          "description": "Compare related synthetic alerts for repeated username, host, and source IP patterns.",
+          "order": 20,
+          "safety_note": "Do not test credentials or contact any external service.",
+          "step_id": "TRIAGE-BRUTE-HIGH",
+          "title": "Compare repeated authentication alerts"
+        }
+      ]
+    },
+    {
+      "alert_id": "alert-0005",
+      "escalation_required": true,
+      "event_type": "port_scan",
+      "evidence_points": [
+        "Alert alert-0005 is a synthetic port_scan event.",
+        "Final severity is CRITICAL.",
+        "Triggered modifier IDs: MOD-PRIVILEGED-USERNAME.",
+        "Mapped MITRE technique IDs: T1046."
+      ],
+      "final_severity": "CRITICAL",
+      "generated_by": "deterministic_template_engine",
+      "mitre_context": "This maps to MITRE ATT&CK technique T1046 Network Service Discovery under Discovery.",
+      "mitre_tactic": "Discovery",
+      "mitre_technique_id": "T1046",
+      "modifiers_referenced": [
+        "MOD-PRIVILEGED-USERNAME"
+      ],
+      "playbook_id": "TRIAGE-PORTSCAN-MEDIUM",
+      "reasoning": "The final severity is CRITICAL. The decision reflects the local base severity and modifier(s) MOD-PRIVILEGED-USERNAME. This maps to MITRE ATT&CK technique T1046 Network Service Discovery under Discovery.",
+      "suggested_priority": "immediate",
+      "summary": "Multiple connection attempts suggest reconnaissance behavior in the synthetic dataset.",
+      "template_id": "TPL-PORT-SCAN",
+      "triage_steps": [
+        {
+          "description": "Review destination ports and affected synthetic hosts in the local alert set.",
+          "order": 30,
+          "safety_note": "Do not scan hosts or run network tools.",
+          "step_id": "TRIAGE-PORTSCAN-MEDIUM",
+          "title": "Review local service-attempt pattern"
+        }
+      ]
+    },
+    {
+      "alert_id": "alert-0006",
+      "escalation_required": true,
+      "event_type": "port_scan",
+      "evidence_points": [
+        "Alert alert-0006 is a synthetic port_scan event.",
+        "Final severity is HIGH.",
+        "Triggered modifier IDs: MOD-SENSITIVE-DEST-PORT.",
+        "Mapped MITRE technique IDs: T1046."
+      ],
+      "final_severity": "HIGH",
+      "generated_by": "deterministic_template_engine",
+      "mitre_context": "This maps to MITRE ATT&CK technique T1046 Network Service Discovery under Discovery.",
+      "mitre_tactic": "Discovery",
+      "mitre_technique_id": "T1046",
+      "modifiers_referenced": [
+        "MOD-SENSITIVE-DEST-PORT"
+      ],
+      "playbook_id": "TRIAGE-PORTSCAN-MEDIUM",
+      "reasoning": "The final severity is HIGH. The decision reflects the local base severity and modifier(s) MOD-SENSITIVE-DEST-PORT. This maps to MITRE ATT&CK technique T1046 Network Service Discovery under Discovery.",
+      "suggested_priority": "urgent",
+      "summary": "Multiple connection attempts suggest reconnaissance behavior in the synthetic dataset.",
+      "template_id": "TPL-PORT-SCAN",
+      "triage_steps": [
+        {
+          "description": "Review destination ports and affected synthetic hosts in the local alert set.",
+          "order": 30,
+          "safety_note": "Do not scan hosts or run network tools.",
+          "step_id": "TRIAGE-PORTSCAN-MEDIUM",
+          "title": "Review local service-attempt pattern"
+        }
+      ]
+    },
+    {
+      "alert_id": "alert-0007",
+      "escalation_required": true,
+      "event_type": "privilege_escalation",
+      "evidence_points": [
+        "Alert alert-0007 is a synthetic privilege_escalation event.",
+        "Final severity is CRITICAL.",
+        "Triggered modifier IDs: MOD-SENSITIVE-DEST-PORT, MOD-PRIVILEGED-USERNAME.",
+        "Mapped MITRE technique IDs: T1068."
+      ],
+      "final_severity": "CRITICAL",
+      "generated_by": "deterministic_template_engine",
+      "mitre_context": "This maps to MITRE ATT&CK technique T1068 Exploitation for Privilege Escalation under Privilege Escalation.",
+      "mitre_tactic": "Privilege Escalation",
+      "mitre_technique_id": "T1068",
+      "modifiers_referenced": [
+        "MOD-SENSITIVE-DEST-PORT",
+        "MOD-PRIVILEGED-USERNAME"
+      ],
+      "playbook_id": "TRIAGE-PRIVESC-HIGH",
+      "reasoning": "The final severity is CRITICAL. The classifier used the local base severity for privilege_escalation and applied modifier(s) MOD-SENSITIVE-DEST-PORT, MOD-PRIVILEGED-USERNAME. This maps to MITRE ATT&CK technique T1068 Exploitation for Privilege Escalation under Privilege Escalation.",
+      "suggested_priority": "immediate",
+      "summary": "A synthetic privilege_escalation alert was reviewed by the deterministic triage pipeline.",
+      "template_id": "TPL-GENERIC",
+      "triage_steps": [
+        {
+          "description": "Check whether the synthetic username is listed as privileged and compare nearby alerts.",
+          "order": 40,
+          "safety_note": "Use only local lab records and do not run system-modifying commands.",
+          "step_id": "TRIAGE-PRIVESC-HIGH",
+          "title": "Review synthetic privilege-change context"
+        }
+      ]
+    },
+    {
+      "alert_id": "alert-0008",
+      "escalation_required": true,
+      "event_type": "privilege_escalation",
+      "evidence_points": [
+        "Alert alert-0008 is a synthetic privilege_escalation event.",
+        "Final severity is CRITICAL.",
+        "Triggered modifier IDs: MOD-SENSITIVE-DEST-PORT, MOD-PRIVILEGED-USERNAME.",
+        "Mapped MITRE technique IDs: T1068."
+      ],
+      "final_severity": "CRITICAL",
+      "generated_by": "deterministic_template_engine",
+      "mitre_context": "This maps to MITRE ATT&CK technique T1068 Exploitation for Privilege Escalation under Privilege Escalation.",
+      "mitre_tactic": "Privilege Escalation",
+      "mitre_technique_id": "T1068",
+      "modifiers_referenced": [
+        "MOD-SENSITIVE-DEST-PORT",
+        "MOD-PRIVILEGED-USERNAME"
+      ],
+      "playbook_id": "TRIAGE-PRIVESC-HIGH",
+      "reasoning": "The final severity is CRITICAL. The classifier used the local base severity for privilege_escalation and applied modifier(s) MOD-SENSITIVE-DEST-PORT, MOD-PRIVILEGED-USERNAME. This maps to MITRE ATT&CK technique T1068 Exploitation for Privilege Escalation under Privilege Escalation.",
+      "suggested_priority": "immediate",
+      "summary": "A synthetic privilege_escalation alert was reviewed by the deterministic triage pipeline.",
+      "template_id": "TPL-GENERIC",
+      "triage_steps": [
+        {
+          "description": "Check whether the synthetic username is listed as privileged and compare nearby alerts.",
+          "order": 40,
+          "safety_note": "Use only local lab records and do not run system-modifying commands.",
+          "step_id": "TRIAGE-PRIVESC-HIGH",
+          "title": "Review synthetic privilege-change context"
+        }
+      ]
+    },
+    {
+      "alert_id": "alert-0009",
+      "escalation_required": true,
+      "event_type": "data_exfiltration",
+      "evidence_points": [
+        "Alert alert-0009 is a synthetic data_exfiltration event.",
+        "Final severity is CRITICAL.",
+        "Mapped MITRE technique IDs: T1041."
+      ],
+      "final_severity": "CRITICAL",
+      "generated_by": "deterministic_template_engine",
+      "mitre_context": "This maps to MITRE ATT&CK technique T1041 Exfiltration Over C2 Channel under Exfiltration.",
+      "mitre_tactic": "Exfiltration",
+      "mitre_technique_id": "T1041",
+      "modifiers_referenced": [],
+      "playbook_id": "TRIAGE-EXFIL-CRITICAL",
+      "reasoning": "The final severity is CRITICAL. The classifier used the local base severity for data_exfiltration and applied no severity modifiers. This maps to MITRE ATT&CK technique T1041 Exfiltration Over C2 Channel under Exfiltration.",
+      "suggested_priority": "immediate",
+      "summary": "A synthetic data_exfiltration alert was reviewed by the deterministic triage pipeline.",
+      "template_id": "TPL-GENERIC",
+      "triage_steps": [
+        {
+          "description": "Review local count, source host, destination IP, and related synthetic data-movement tags.",
+          "order": 50,
+          "safety_note": "Do not contact external destinations or enrich with live services.",
+          "step_id": "TRIAGE-EXFIL-CRITICAL",
+          "title": "Review synthetic outbound transfer indicators"
+        }
+      ]
+    },
+    {
+      "alert_id": "alert-0010",
+      "escalation_required": true,
+      "event_type": "data_exfiltration",
+      "evidence_points": [
+        "Alert alert-0010 is a synthetic data_exfiltration event.",
+        "Final severity is CRITICAL.",
+        "Mapped MITRE technique IDs: T1041."
+      ],
+      "final_severity": "CRITICAL",
+      "generated_by": "deterministic_template_engine",
+      "mitre_context": "This maps to MITRE ATT&CK technique T1041 Exfiltration Over C2 Channel under Exfiltration.",
+      "mitre_tactic": "Exfiltration",
+      "mitre_technique_id": "T1041",
+      "modifiers_referenced": [],
+      "playbook_id": "TRIAGE-EXFIL-CRITICAL",
+      "reasoning": "The final severity is CRITICAL. The classifier used the local base severity for data_exfiltration and applied no severity modifiers. This maps to MITRE ATT&CK technique T1041 Exfiltration Over C2 Channel under Exfiltration.",
+      "suggested_priority": "immediate",
+      "summary": "A synthetic data_exfiltration alert was reviewed by the deterministic triage pipeline.",
+      "template_id": "TPL-GENERIC",
+      "triage_steps": [
+        {
+          "description": "Review local count, source host, destination IP, and related synthetic data-movement tags.",
+          "order": 50,
+          "safety_note": "Do not contact external destinations or enrich with live services.",
+          "step_id": "TRIAGE-EXFIL-CRITICAL",
+          "title": "Review synthetic outbound transfer indicators"
+        }
+      ]
+    },
+    {
+      "alert_id": "alert-0011",
+      "escalation_required": true,
+      "event_type": "lateral_movement",
+      "evidence_points": [
+        "Alert alert-0011 is a synthetic lateral_movement event.",
+        "Final severity is CRITICAL.",
+        "Triggered modifier IDs: MOD-SENSITIVE-DEST-PORT, MOD-PRIVILEGED-USERNAME.",
+        "Mapped MITRE technique IDs: T1021."
+      ],
+      "final_severity": "CRITICAL",
+      "generated_by": "deterministic_template_engine",
+      "mitre_context": "This maps to MITRE ATT&CK technique T1021 Remote Services under Lateral Movement.",
+      "mitre_tactic": "Lateral Movement",
+      "mitre_technique_id": "T1021",
+      "modifiers_referenced": [
+        "MOD-SENSITIVE-DEST-PORT",
+        "MOD-PRIVILEGED-USERNAME"
+      ],
+      "playbook_id": "TRIAGE-LATERAL-HIGH",
+      "reasoning": "The final severity is CRITICAL. The classifier used the local base severity for lateral_movement and applied modifier(s) MOD-SENSITIVE-DEST-PORT, MOD-PRIVILEGED-USERNAME. This maps to MITRE ATT&CK technique T1021 Remote Services under Lateral Movement.",
+      "suggested_priority": "immediate",
+      "summary": "A synthetic lateral_movement alert was reviewed by the deterministic triage pipeline.",
+      "template_id": "TPL-GENERIC",
+      "triage_steps": [
+        {
+          "description": "Compare synthetic source, destination, username, and administrative port fields.",
+          "order": 60,
+          "safety_note": "Do not attempt remote access or execute administrative tooling.",
+          "step_id": "TRIAGE-LATERAL-HIGH",
+          "title": "Compare related synthetic host movement"
+        }
+      ]
+    },
+    {
+      "alert_id": "alert-0012",
+      "escalation_required": true,
+      "event_type": "lateral_movement",
+      "evidence_points": [
+        "Alert alert-0012 is a synthetic lateral_movement event.",
+        "Final severity is CRITICAL.",
+        "Triggered modifier IDs: MOD-SENSITIVE-DEST-PORT, MOD-PRIVILEGED-USERNAME.",
+        "Mapped MITRE technique IDs: T1021."
+      ],
+      "final_severity": "CRITICAL",
+      "generated_by": "deterministic_template_engine",
+      "mitre_context": "This maps to MITRE ATT&CK technique T1021 Remote Services under Lateral Movement.",
+      "mitre_tactic": "Lateral Movement",
+      "mitre_technique_id": "T1021",
+      "modifiers_referenced": [
+        "MOD-SENSITIVE-DEST-PORT",
+        "MOD-PRIVILEGED-USERNAME"
+      ],
+      "playbook_id": "TRIAGE-LATERAL-HIGH",
+      "reasoning": "The final severity is CRITICAL. The classifier used the local base severity for lateral_movement and applied modifier(s) MOD-SENSITIVE-DEST-PORT, MOD-PRIVILEGED-USERNAME. This maps to MITRE ATT&CK technique T1021 Remote Services under Lateral Movement.",
+      "suggested_priority": "immediate",
+      "summary": "A synthetic lateral_movement alert was reviewed by the deterministic triage pipeline.",
+      "template_id": "TPL-GENERIC",
+      "triage_steps": [
+        {
+          "description": "Compare synthetic source, destination, username, and administrative port fields.",
+          "order": 60,
+          "safety_note": "Do not attempt remote access or execute administrative tooling.",
+          "step_id": "TRIAGE-LATERAL-HIGH",
+          "title": "Compare related synthetic host movement"
+        }
+      ]
+    },
+    {
+      "alert_id": "alert-0013",
+      "escalation_required": true,
+      "event_type": "malware_detected",
+      "evidence_points": [
+        "Alert alert-0013 is a synthetic malware_detected event.",
+        "Final severity is CRITICAL.",
+        "Mapped MITRE technique IDs: T1204."
+      ],
+      "final_severity": "CRITICAL",
+      "generated_by": "deterministic_template_engine",
+      "mitre_context": "This maps to MITRE ATT&CK technique T1204 User Execution under Execution.",
+      "mitre_tactic": "Execution",
+      "mitre_technique_id": "T1204",
+      "modifiers_referenced": [],
+      "playbook_id": "TRIAGE-MALWARE-HIGH",
+      "reasoning": "The final severity is CRITICAL. The classifier used the local base severity for malware_detected and applied no severity modifiers. This maps to MITRE ATT&CK technique T1204 User Execution under Execution.",
+      "suggested_priority": "immediate",
+      "summary": "A synthetic malware_detected alert was reviewed by the deterministic triage pipeline.",
+      "template_id": "TPL-GENERIC",
+      "triage_steps": [
+        {
+          "description": "Review the local synthetic endpoint alert and preserve report context for later analysis.",
+          "order": 70,
+          "safety_note": "Do not execute files, samples, or external lookup tools.",
+          "step_id": "TRIAGE-MALWARE-HIGH",
+          "title": "Review synthetic endpoint detection marker"
+        }
+      ]
+    },
+    {
+      "alert_id": "alert-0014",
+      "escalation_required": true,
+      "event_type": "malware_detected",
+      "evidence_points": [
+        "Alert alert-0014 is a synthetic malware_detected event.",
+        "Final severity is CRITICAL.",
+        "Mapped MITRE technique IDs: T1204."
+      ],
+      "final_severity": "CRITICAL",
+      "generated_by": "deterministic_template_engine",
+      "mitre_context": "This maps to MITRE ATT&CK technique T1204 User Execution under Execution.",
+      "mitre_tactic": "Execution",
+      "mitre_technique_id": "T1204",
+      "modifiers_referenced": [],
+      "playbook_id": "TRIAGE-MALWARE-HIGH",
+      "reasoning": "The final severity is CRITICAL. The classifier used the local base severity for malware_detected and applied no severity modifiers. This maps to MITRE ATT&CK technique T1204 User Execution under Execution.",
+      "suggested_priority": "immediate",
+      "summary": "A synthetic malware_detected alert was reviewed by the deterministic triage pipeline.",
+      "template_id": "TPL-GENERIC",
+      "triage_steps": [
+        {
+          "description": "Review the local synthetic endpoint alert and preserve report context for later analysis.",
+          "order": 70,
+          "safety_note": "Do not execute files, samples, or external lookup tools.",
+          "step_id": "TRIAGE-MALWARE-HIGH",
+          "title": "Review synthetic endpoint detection marker"
+        }
+      ]
+    },
+    {
+      "alert_id": "alert-0015",
+      "escalation_required": true,
+      "event_type": "c2_beacon",
+      "evidence_points": [
+        "Alert alert-0015 is a synthetic c2_beacon event.",
+        "Final severity is CRITICAL.",
+        "Triggered modifier IDs: MOD-PRIVILEGED-USERNAME.",
+        "Mapped MITRE technique IDs: T1071."
+      ],
+      "final_severity": "CRITICAL",
+      "generated_by": "deterministic_template_engine",
+      "mitre_context": "This maps to MITRE ATT&CK technique T1071 Application Layer Protocol under Command and Control.",
+      "mitre_tactic": "Command and Control",
+      "mitre_technique_id": "T1071",
+      "modifiers_referenced": [
+        "MOD-PRIVILEGED-USERNAME"
+      ],
+      "playbook_id": "TRIAGE-C2-CRITICAL",
+      "reasoning": "The final severity is CRITICAL. The classifier used the local base severity for c2_beacon and applied modifier(s) MOD-PRIVILEGED-USERNAME. This maps to MITRE ATT&CK technique T1071 Application Layer Protocol under Command and Control.",
+      "suggested_priority": "immediate",
+      "summary": "A synthetic c2_beacon alert was reviewed by the deterministic triage pipeline.",
+      "template_id": "TPL-GENERIC",
+      "triage_steps": [
+        {
+          "description": "Review local periodic count, destination IP, hostname, and related synthetic alerts.",
+          "order": 80,
+          "safety_note": "Do not contact any destination or perform live enrichment.",
+          "step_id": "TRIAGE-C2-CRITICAL",
+          "title": "Review synthetic periodic outbound pattern"
+        }
+      ]
+    },
+    {
+      "alert_id": "alert-0016",
+      "escalation_required": true,
+      "event_type": "c2_beacon",
+      "evidence_points": [
+        "Alert alert-0016 is a synthetic c2_beacon event.",
+        "Final severity is CRITICAL.",
+        "Mapped MITRE technique IDs: T1071."
+      ],
+      "final_severity": "CRITICAL",
+      "generated_by": "deterministic_template_engine",
+      "mitre_context": "This maps to MITRE ATT&CK technique T1071 Application Layer Protocol under Command and Control.",
+      "mitre_tactic": "Command and Control",
+      "mitre_technique_id": "T1071",
+      "modifiers_referenced": [],
+      "playbook_id": "TRIAGE-C2-CRITICAL",
+      "reasoning": "The final severity is CRITICAL. The classifier used the local base severity for c2_beacon and applied no severity modifiers. This maps to MITRE ATT&CK technique T1071 Application Layer Protocol under Command and Control.",
+      "suggested_priority": "immediate",
+      "summary": "A synthetic c2_beacon alert was reviewed by the deterministic triage pipeline.",
+      "template_id": "TPL-GENERIC",
+      "triage_steps": [
+        {
+          "description": "Review local periodic count, destination IP, hostname, and related synthetic alerts.",
+          "order": 80,
+          "safety_note": "Do not contact any destination or perform live enrichment.",
+          "step_id": "TRIAGE-C2-CRITICAL",
+          "title": "Review synthetic periodic outbound pattern"
+        }
+      ]
+    },
+    {
+      "alert_id": "alert-0017",
+      "escalation_required": false,
+      "event_type": "policy_violation",
+      "evidence_points": [
+        "Alert alert-0017 is a synthetic policy_violation event.",
+        "Final severity is LOW.",
+        "No direct MITRE technique mapping was configured."
+      ],
+      "final_severity": "LOW",
+      "generated_by": "deterministic_template_engine",
+      "mitre_context": "No direct MITRE ATT&CK technique mapping is configured.",
+      "mitre_tactic": null,
+      "mitre_technique_id": null,
+      "modifiers_referenced": [],
+      "playbook_id": "TRIAGE-POLICY-LOW",
+      "reasoning": "The final severity is LOW. The classifier used the local base severity for policy_violation and applied no severity modifiers. No direct MITRE ATT&CK technique mapping is configured.",
+      "suggested_priority": "routine",
+      "summary": "A synthetic policy_violation alert was reviewed by the deterministic triage pipeline.",
+      "template_id": "TPL-GENERIC",
+      "triage_steps": [
+        {
+          "description": "Review the local synthetic policy message, username, host, and tags.",
+          "order": 90,
+          "safety_note": "Treat the event as lab-only and do not use real user data.",
+          "step_id": "TRIAGE-POLICY-LOW",
+          "title": "Review synthetic policy context"
+        }
+      ]
+    },
+    {
+      "alert_id": "alert-0018",
+      "escalation_required": false,
+      "event_type": "policy_violation",
+      "evidence_points": [
+        "Alert alert-0018 is a synthetic policy_violation event.",
+        "Final severity is LOW.",
+        "No direct MITRE technique mapping was configured."
+      ],
+      "final_severity": "LOW",
+      "generated_by": "deterministic_template_engine",
+      "mitre_context": "No direct MITRE ATT&CK technique mapping is configured.",
+      "mitre_tactic": null,
+      "mitre_technique_id": null,
+      "modifiers_referenced": [],
+      "playbook_id": "TRIAGE-POLICY-LOW",
+      "reasoning": "The final severity is LOW. The classifier used the local base severity for policy_violation and applied no severity modifiers. No direct MITRE ATT&CK technique mapping is configured.",
+      "suggested_priority": "routine",
+      "summary": "A synthetic policy_violation alert was reviewed by the deterministic triage pipeline.",
+      "template_id": "TPL-GENERIC",
+      "triage_steps": [
+        {
+          "description": "Review the local synthetic policy message, username, host, and tags.",
+          "order": 90,
+          "safety_note": "Treat the event as lab-only and do not use real user data.",
+          "step_id": "TRIAGE-POLICY-LOW",
+          "title": "Review synthetic policy context"
+        }
+      ]
+    },
+    {
+      "alert_id": "alert-0019",
+      "escalation_required": false,
+      "event_type": "anomalous_login_time",
+      "evidence_points": [
+        "Alert alert-0019 is a synthetic anomalous_login_time event.",
+        "Final severity is MEDIUM.",
+        "Mapped MITRE technique IDs: T1078."
+      ],
+      "final_severity": "MEDIUM",
+      "generated_by": "deterministic_template_engine",
+      "mitre_context": "This maps to MITRE ATT&CK technique T1078 Valid Accounts under Defense Evasion.",
+      "mitre_tactic": "Defense Evasion",
+      "mitre_technique_id": "T1078",
+      "modifiers_referenced": [],
+      "playbook_id": "TRIAGE-TIME-MEDIUM",
+      "reasoning": "The final severity is MEDIUM. The classifier used the local base severity for anomalous_login_time and applied no severity modifiers. This maps to MITRE ATT&CK technique T1078 Valid Accounts under Defense Evasion.",
+      "suggested_priority": "standard",
+      "summary": "A synthetic anomalous_login_time alert was reviewed by the deterministic triage pipeline.",
+      "template_id": "TPL-GENERIC",
+      "triage_steps": [
+        {
+          "description": "Review timestamp, username, hostname, and related synthetic authentication alerts.",
+          "order": 100,
+          "safety_note": "Do not query external identity systems.",
+          "step_id": "TRIAGE-TIME-MEDIUM",
+          "title": "Review synthetic anomalous login timing"
+        }
+      ]
+    },
+    {
+      "alert_id": "alert-0020",
+      "escalation_required": true,
+      "event_type": "anomalous_login_time",
+      "evidence_points": [
+        "Alert alert-0020 is a synthetic anomalous_login_time event.",
+        "Final severity is HIGH.",
+        "Triggered modifier IDs: MOD-PRIVILEGED-USERNAME.",
+        "Mapped MITRE technique IDs: T1078."
+      ],
+      "final_severity": "HIGH",
+      "generated_by": "deterministic_template_engine",
+      "mitre_context": "This maps to MITRE ATT&CK technique T1078 Valid Accounts under Defense Evasion.",
+      "mitre_tactic": "Defense Evasion",
+      "mitre_technique_id": "T1078",
+      "modifiers_referenced": [
+        "MOD-PRIVILEGED-USERNAME"
+      ],
+      "playbook_id": "TRIAGE-TIME-MEDIUM",
+      "reasoning": "The final severity is HIGH. The classifier used the local base severity for anomalous_login_time and applied modifier(s) MOD-PRIVILEGED-USERNAME. This maps to MITRE ATT&CK technique T1078 Valid Accounts under Defense Evasion.",
+      "suggested_priority": "urgent",
+      "summary": "A synthetic anomalous_login_time alert was reviewed by the deterministic triage pipeline.",
+      "template_id": "TPL-GENERIC",
+      "triage_steps": [
+        {
+          "description": "Review timestamp, username, hostname, and related synthetic authentication alerts.",
+          "order": 100,
+          "safety_note": "Do not query external identity systems.",
+          "step_id": "TRIAGE-TIME-MEDIUM",
+          "title": "Review synthetic anomalous login timing"
+        }
+      ]
+    },
+    {
+      "alert_id": "alert-0021",
+      "escalation_required": true,
+      "event_type": "unknown",
+      "evidence_points": [
+        "Alert alert-0021 is a synthetic unknown event.",
+        "Final severity is CRITICAL.",
+        "No direct MITRE technique mapping was configured."
+      ],
+      "final_severity": "CRITICAL",
+      "generated_by": "deterministic_template_engine",
+      "mitre_context": "No direct MITRE ATT&CK technique mapping is configured.",
+      "mitre_tactic": null,
+      "mitre_technique_id": null,
+      "modifiers_referenced": [],
+      "playbook_id": "TRIAGE-UNKNOWN-LOW",
+      "reasoning": "The final severity is CRITICAL. The classifier used configured fallback behavior and no severity modifiers. No direct MITRE ATT&CK technique mapping is configured.",
+      "suggested_priority": "immediate",
+      "summary": "The alert uses an unknown synthetic event type and should be preserved for analyst review.",
+      "template_id": "TPL-UNKNOWN",
+      "triage_steps": [
+        {
+          "description": "Preserve the unknown synthetic alert and document which fields are available.",
+          "order": 110,
+          "safety_note": "Do not infer live behavior or perform external lookups.",
+          "step_id": "TRIAGE-UNKNOWN-LOW",
+          "title": "Preserve unknown synthetic alert for review"
+        }
+      ]
+    },
+    {
+      "alert_id": "alert-0022",
+      "escalation_required": false,
+      "event_type": "unknown",
+      "evidence_points": [
+        "Alert alert-0022 is a synthetic unknown event.",
+        "Final severity is MEDIUM.",
+        "No direct MITRE technique mapping was configured."
+      ],
+      "final_severity": "MEDIUM",
+      "generated_by": "deterministic_template_engine",
+      "mitre_context": "No direct MITRE ATT&CK technique mapping is configured.",
+      "mitre_tactic": null,
+      "mitre_technique_id": null,
+      "modifiers_referenced": [],
+      "playbook_id": "TRIAGE-UNKNOWN-LOW",
+      "reasoning": "The final severity is MEDIUM. The classifier used configured fallback behavior and no severity modifiers. No direct MITRE ATT&CK technique mapping is configured.",
+      "suggested_priority": "standard",
+      "summary": "The alert uses an unknown synthetic event type and should be preserved for analyst review.",
+      "template_id": "TPL-UNKNOWN",
+      "triage_steps": [
+        {
+          "description": "Preserve the unknown synthetic alert and document which fields are available.",
+          "order": 110,
+          "safety_note": "Do not infer live behavior or perform external lookups.",
+          "step_id": "TRIAGE-UNKNOWN-LOW",
+          "title": "Preserve unknown synthetic alert for review"
+        }
+      ]
+    }
+  ],
+  "incidents": [
+    {
+      "alert_ids": [
+        "alert-0001",
+        "alert-0002",
+        "alert-0003",
+        "alert-0004",
+        "alert-0005",
+        "alert-0006",
+        "alert-0007",
+        "alert-0008",
+        "alert-0009",
+        "alert-0010",
+        "alert-0011",
+        "alert-0012",
+        "alert-0013",
+        "alert-0014",
+        "alert-0015",
+        "alert-0016",
+        "alert-0017",
+        "alert-0018",
+        "alert-0019",
+        "alert-0020",
+        "alert-0021",
+        "alert-0022"
+      ],
+      "correlation_reasons": [
+        {
+          "contributing_alert_ids": [
+            "alert-0001",
+            "alert-0002",
+            "alert-0003",
+            "alert-0004",
+            "alert-0005",
+            "alert-0006",
+            "alert-0007",
+            "alert-0008",
+            "alert-0009",
+            "alert-0010",
+            "alert-0012",
+            "alert-0013",
+            "alert-0015",
+            "alert-0016",
+            "alert-0017",
+            "alert-0018",
+            "alert-0021",
+            "alert-0022"
+          ],
+          "description": "Group multi-stage synthetic activity involving the same lab hostname within 90 minutes.",
+          "matched_fields": [
+            "event_type",
+            "hostname"
+          ],
+          "rule_id": "same_host_multi_stage_activity",
+          "time_window_minutes": 90
+        },
+        {
+          "contributing_alert_ids": [
+            "alert-0001",
+            "alert-0002",
+            "alert-0003",
+            "alert-0004",
+            "alert-0005",
+            "alert-0006",
+            "alert-0007",
+            "alert-0008",
+            "alert-0009",
+            "alert-0010",
+            "alert-0011",
+            "alert-0012",
+            "alert-0013",
+            "alert-0015",
+            "alert-0016",
+            "alert-0017",
+            "alert-0018",
+            "alert-0019",
+            "alert-0020",
+            "alert-0021",
+            "alert-0022"
+          ],
+          "description": "Group alerts sharing a synthetic hostname when any alert is critical.",
+          "matched_fields": [
+            "final_severity",
+            "hostname"
+          ],
+          "rule_id": "same_hostname_with_critical_alert",
+          "time_window_minutes": 720
+        },
+        {
+          "contributing_alert_ids": [
+            "alert-0001",
+            "alert-0002",
+            "alert-0003",
+            "alert-0004",
+            "alert-0005",
+            "alert-0006",
+            "alert-0007",
+            "alert-0008",
+            "alert-0009",
+            "alert-0010",
+            "alert-0011",
+            "alert-0012",
+            "alert-0013",
+            "alert-0014",
+            "alert-0015",
+            "alert-0016"
+          ],
+          "description": "Group alerts sharing a local MITRE tactic within 30 minutes.",
+          "matched_fields": [
+            "mitre_tactic"
+          ],
+          "rule_id": "same_mitre_tactic_within_30m",
+          "time_window_minutes": 30
+        },
+        {
+          "contributing_alert_ids": [
+            "alert-0004",
+            "alert-0008"
+          ],
+          "description": "Group authentication alerts followed by privilege escalation or lateral movement for the same synthetic username or host within 60 minutes.",
+          "matched_fields": [
+            "event_type",
+            "hostname"
+          ],
+          "rule_id": "same_source_and_privilege_escalation_chain",
+          "time_window_minutes": 60
+        },
+        {
+          "contributing_alert_ids": [
+            "alert-0004",
+            "alert-0012"
+          ],
+          "description": "Group authentication alerts followed by privilege escalation or lateral movement for the same synthetic username or host within 60 minutes.",
+          "matched_fields": [
+            "event_type",
+            "hostname",
+            "username"
+          ],
+          "rule_id": "same_source_and_privilege_escalation_chain",
+          "time_window_minutes": 60
+        },
+        {
+          "contributing_alert_ids": [
+            "alert-0004",
+            "alert-0007"
+          ],
+          "description": "Group authentication alerts followed by privilege escalation or lateral movement for the same synthetic username or host within 60 minutes.",
+          "matched_fields": [
+            "event_type",
+            "username"
+          ],
+          "rule_id": "same_source_and_privilege_escalation_chain",
+          "time_window_minutes": 60
+        },
+        {
+          "contributing_alert_ids": [
+            "alert-0001",
+            "alert-0002",
+            "alert-0003",
+            "alert-0004",
+            "alert-0005",
+            "alert-0006",
+            "alert-0007",
+            "alert-0008",
+            "alert-0009",
+            "alert-0010",
+            "alert-0011",
+            "alert-0012",
+            "alert-0013",
+            "alert-0014",
+            "alert-0015",
+            "alert-0016",
+            "alert-0017",
+            "alert-0018",
+            "alert-0021",
+            "alert-0022"
+          ],
+          "description": "Group alerts sharing a synthetic username within 60 minutes.",
+          "matched_fields": [
+            "username"
+          ],
+          "rule_id": "same_username_within_60m",
+          "time_window_minutes": 60
+        }
+      ],
+      "event_types": [
+        "anomalous_login_time",
+        "brute_force",
+        "c2_beacon",
+        "data_exfiltration",
+        "failed_login",
+        "lateral_movement",
+        "malware_detected",
+        "policy_violation",
+        "port_scan",
+        "privilege_escalation",
+        "unknown"
+      ],
+      "hostnames": [
+        "domain-controller.test",
+        "file-server.test",
+        "server-01.test",
+        "web-gateway.test",
+        "workstation-01.test",
+        "workstation-02.test"
+      ],
+      "incident_id": "INC-0001",
+      "member_count": 22,
+      "mitre_tactics_observed": [
+        "Command and Control",
+        "Credential Access",
+        "Defense Evasion",
+        "Discovery",
+        "Execution",
+        "Exfiltration",
+        "Lateral Movement",
+        "Privilege Escalation"
+      ],
+      "mitre_techniques_observed": [
+        "T1021",
+        "T1041",
+        "T1046",
+        "T1068",
+        "T1071",
+        "T1078",
+        "T1110",
+        "T1204"
+      ],
+      "severity": "CRITICAL",
+      "source_ips_redacted": [
+        "[REDACTED:source_ip:1]",
+        "[REDACTED:source_ip:2]",
+        "[REDACTED:source_ip:3]",
+        "[REDACTED:source_ip:4]",
+        "[REDACTED:source_ip:5]",
+        "[REDACTED:source_ip:6]",
+        "[REDACTED:source_ip:7]",
+        "[REDACTED:source_ip:8]",
+        "[REDACTED:source_ip:9]",
+        "[REDACTED:source_ip:10]",
+        "[REDACTED:source_ip:11]",
+        "[REDACTED:source_ip:12]",
+        "[REDACTED:source_ip:13]",
+        "[REDACTED:source_ip:14]",
+        "[REDACTED:source_ip:15]",
+        "[REDACTED:source_ip:16]",
+        "[REDACTED:source_ip:17]",
+        "[REDACTED:source_ip:18]",
+        "[REDACTED:source_ip:19]",
+        "[REDACTED:source_ip:20]",
+        "[REDACTED:source_ip:21]",
+        "[REDACTED:source_ip:22]"
+      ],
+      "suggested_priority": "P1",
+      "summary": "CRITICAL synthetic incident correlating 22 alert(s) across event type(s): anomalous_login_time, brute_force, c2_beacon, data_exfiltration, failed_login, lateral_movement, malware_detected, policy_violation, port_scan, privilege_escalation, unknown. Timeline runs from 2026-01-15T02:15:00+00:00 to 2026-01-15T09:05:00+00:00.",
+      "timeline_end": "2026-01-15T09:05:00+00:00",
+      "timeline_start": "2026-01-15T02:15:00+00:00",
+      "title": "CRITICAL synthetic incident with 22 alerts",
+      "usernames_redacted": [
+        "[REDACTED:username:1]",
+        "[REDACTED:username:2]",
+        "[REDACTED:username:3]",
+        "[REDACTED:username:4]",
+        "[REDACTED:username:5]"
+      ]
+    }
+  ],
+  "metadata": {
+    "deterministic_ai": true,
+    "generated_at": "2026-06-25T00:00:00Z",
+    "input_path": "alerts/sample_alerts.json",
+    "offline_only": true,
+    "project_name": "AI-Assisted Security Alert Triage Lab",
+    "redaction_policy": "default-report-safe-v1",
+    "report_type": "security_alert_triage",
+    "synthetic_data_only": true,
+    "tool_version": "0.1.0"
+  },
+  "redaction_summary": {
+    "credential_patterns_redacted": 0,
+    "fields_redacted": 0,
+    "ip_values_redacted": 0,
+    "markers_redacted": 0,
+    "raw_content_removed": 0,
+    "redaction_applied": false,
+    "redaction_policy": "default-report-safe-v1",
+    "usernames_redacted": 0
+  },
+  "summary": {
+    "alerts_loaded": 22,
+    "classified_alerts": 22,
+    "explained_alerts": 22,
+    "grouped_alert_count": 22,
+    "highest_alert_severity": "CRITICAL",
+    "highest_incident_severity": "CRITICAL",
+    "incident_count": 1,
+    "malformed_records": 0,
+    "safe_for_output": true,
+    "severity_counts": {
+      "CRITICAL": 14,
+      "HIGH": 2,
+      "LOW": 4,
+      "MEDIUM": 2
+    },
+    "tactics_observed": [
+      "Command and Control",
+      "Credential Access",
+      "Defense Evasion",
+      "Discovery",
+      "Execution",
+      "Exfiltration",
+      "Lateral Movement",
+      "Policy Event",
+      "Privilege Escalation",
+      "Unknown"
+    ],
+    "techniques_observed": [
+      "T1021",
+      "T1041",
+      "T1046",
+      "T1068",
+      "T1071",
+      "T1078",
+      "T1110",
+      "T1204"
+    ],
+    "ungrouped_alert_count": 0
+  },
+  "validation_errors": []
+}

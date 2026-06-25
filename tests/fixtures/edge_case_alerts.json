@@ -1,0 +1,45 @@
+[
+  {
+    "alert_id": "edge-0001",
+    "timestamp": "2026-01-16T11:00:00Z",
+    "source_ip": "10.0.0.1",
+    "dest_ip": "10.255.255.254",
+    "source_port": 1,
+    "dest_port": 65535,
+    "username": "lab_user",
+    "hostname": "workstation-01.test",
+    "event_type": "unknown",
+    "raw_message": "Synthetic boundary private range fixture.",
+    "count": 1,
+    "tags": [],
+    "synthetic_marker": true
+  },
+  {
+    "alert_id": "edge-0002",
+    "timestamp": "2026-01-16T11:05:00Z",
+    "source_ip": "172.16.0.1",
+    "dest_ip": "172.31.255.254",
+    "username": "service_account_test",
+    "hostname": "domain-controller.test",
+    "event_type": "policy_violation",
+    "raw_message": "Synthetic edge fixture with optional ports omitted.",
+    "count": 0,
+    "tags": ["edge", "synthetic"],
+    "synthetic_marker": true
+  },
+  {
+    "alert_id": "edge-0003",
+    "timestamp": "2026-01-16T11:10:00Z",
+    "source_ip": "203.0.113.254",
+    "dest_ip": "198.51.100.254",
+    "source_port": 65000,
+    "dest_port": 443,
+    "username": "analyst_user",
+    "hostname": "web-gateway.test",
+    "event_type": "data_exfiltration",
+    "raw_message": "Synthetic documentation range fixture referencing example.net.",
+    "count": 99,
+    "tags": ["edge", "synthetic"],
+    "synthetic_marker": true
+  }
+]

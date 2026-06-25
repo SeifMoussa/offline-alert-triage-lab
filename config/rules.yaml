@@ -1,0 +1,123 @@
+name: offline-alert-triage-default-rules
+version: 1
+status: phase_4_classification_config
+description: Local deterministic severity rules for synthetic alert triage.
+safety:
+  offline_only: true
+  synthetic_data_only: true
+  network_calls: false
+  external_ai: false
+  external_threat_intelligence: false
+
+severity_levels:
+  - LOW
+  - MEDIUM
+  - HIGH
+  - CRITICAL
+
+default_severity: MEDIUM
+
+base_severity:
+  failed_login: LOW
+  brute_force: HIGH
+  port_scan: MEDIUM
+  privilege_escalation: CRITICAL
+  data_exfiltration: CRITICAL
+  lateral_movement: HIGH
+  malware_detected: CRITICAL
+  c2_beacon: CRITICAL
+  policy_violation: LOW
+  anomalous_login_time: MEDIUM
+  unknown: MEDIUM
+
+sensitive_destination_ports:
+  - 22
+  - 445
+  - 3389
+  - 5985
+  - 5986
+
+privileged_usernames:
+  - root
+  - admin
+  - test_admin
+  - service_account_test
+
+known_synthetic_bad_ips:
+  - 192.0.2.50
+  - 198.51.100.25
+  - 203.0.113.44
+  - 203.0.113.120
+
+synthetic_marker_patterns:
+  - name: synthetic_secret_marker
+    pattern: "SYNTHETIC_[A-Z_]+_MARKER"
+    description: Approved fake marker pattern for redaction and classification tests only.
+
+modifier_rules:
+  - id: MOD-COUNT-100
+    description: Count at or above 100 raises severity by one level.
+    effect: raise
+    severity_delta: 1
+    condition:
+      field: count
+      operator: greater_than_or_equal
+      value: 100
+  - id: MOD-COUNT-500
+    description: Count at or above 500 raises severity by two levels.
+    effect: raise
+    severity_delta: 2
+    condition:
+      field: count
+      operator: greater_than_or_equal
+      value: 500
+  - id: MOD-SENSITIVE-DEST-PORT
+    description: Sensitive administrative destination port raises severity by one level.
+    effect: raise
+    severity_delta: 1
+    condition:
+      field: dest_port
+      operator: in_config_list
+      config_key: sensitive_destination_ports
+  - id: MOD-PRIVILEGED-USERNAME
+    description: Privileged synthetic username raises severity by one level.
+    effect: raise
+    severity_delta: 1
+    condition:
+      field: username
+      operator: in_config_list
+      config_key: privileged_usernames
+  - id: MOD-INTERNAL-ASSET-TAG
+    description: internal_asset tag raises severity by one level.
+    effect: raise
+    severity_delta: 1
+    condition:
+      field: tags
+      operator: contains
+      value: internal_asset
+  - id: MOD-HONEYPOT-TAG
+    description: honeypot tag raises severity by one level.
+    effect: raise
+    severity_delta: 1
+    condition:
+      field: tags
+      operator: contains
+      value: honeypot
+  - id: MOD-SYNTHETIC-MARKER
+    description: Approved synthetic marker pattern raises severity by one level.
+    effect: raise
+    severity_delta: 1
+    condition:
+      field: raw_message
+      operator: regex_from_config
+      config_key: synthetic_marker_patterns
+
+override_rules:
+  - id: OVR-KNOWN-SYNTHETIC-BAD-IP
+    description: Known synthetic bad source IP overrides final severity to CRITICAL.
+    effect: override
+    severity: CRITICAL
+    condition:
+      field: source_ip
+      operator: in_config_list
+      config_key: known_synthetic_bad_ips

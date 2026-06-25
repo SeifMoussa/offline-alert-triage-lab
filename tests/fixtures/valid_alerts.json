@@ -1,0 +1,47 @@
+[
+  {
+    "alert_id": "valid-0001",
+    "timestamp": "2026-01-16T10:00:00Z",
+    "source_ip": "10.1.1.10",
+    "dest_ip": "10.1.1.20",
+    "source_port": 50000,
+    "dest_port": 443,
+    "username": "analyst_user",
+    "hostname": "workstation-01.test",
+    "event_type": "failed_login",
+    "raw_message": "Synthetic failed login fixture.",
+    "count": 1,
+    "tags": ["authentication", "synthetic"],
+    "synthetic_marker": true
+  },
+  {
+    "alert_id": "valid-0002",
+    "timestamp": "2026-01-16T10:05:00Z",
+    "source_ip": "192.0.2.25",
+    "dest_ip": "192.168.1.20",
+    "source_port": 50001,
+    "dest_port": 22,
+    "username": "test_admin",
+    "hostname": "server-01.test",
+    "event_type": "brute_force",
+    "raw_message": "Synthetic repeated failed login fixture.",
+    "count": 15,
+    "tags": ["authentication", "synthetic"],
+    "synthetic_marker": true
+  },
+  {
+    "alert_id": "valid-0003",
+    "timestamp": "2026-01-16T10:10:00Z",
+    "source_ip": "198.51.100.30",
+    "dest_ip": "10.1.2.30",
+    "source_port": 50002,
+    "dest_port": 443,
+    "username": "demo_user",
+    "hostname": "web-gateway.test",
+    "event_type": "c2_beacon",
+    "raw_message": "Synthetic periodic outbound fixture to example.net.",
+    "count": 8,
+    "tags": ["network", "synthetic"],
+    "synthetic_marker": true
+  }
+]

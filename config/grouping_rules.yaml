@@ -1,0 +1,57 @@
+name: offline-alert-triage-grouping-rules
+version: 1
+status: phase_7_static_grouping_rules
+description: Local deterministic incident grouping rules for synthetic alerts.
+safety:
+  offline_only: true
+  synthetic_data_only: true
+  network_calls: false
+  external_ai: false
+  external_threat_intelligence: false
+
+rules:
+  - id: same_source_ip_within_15m
+    description: Group alerts sharing a synthetic source IP within 15 minutes.
+    enabled: true
+    match_type: same_field_time_window
+    field: source_ip
+    time_window_minutes: 15
+    minimum_alerts: 2
+  - id: same_username_within_60m
+    description: Group alerts sharing a synthetic username within 60 minutes.
+    enabled: true
+    match_type: same_field_time_window
+    field: username
+    time_window_minutes: 60
+    minimum_alerts: 2
+  - id: same_hostname_with_critical_alert
+    description: Group alerts sharing a synthetic hostname when any alert is critical.
+    enabled: true
+    match_type: same_field_with_severity
+    field: hostname
+    required_severity: CRITICAL
+    time_window_minutes: 720
+    minimum_alerts: 2
+  - id: same_mitre_tactic_within_30m
+    description: Group alerts sharing a local MITRE tactic within 30 minutes.
+    enabled: true
+    match_type: same_mitre_tactic_time_window
+    time_window_minutes: 30
+    minimum_alerts: 2
+  - id: same_source_and_privilege_escalation_chain
+    description: Group authentication alerts followed by privilege escalation or lateral movement for the same synthetic username or host within 60 minutes.
+    enabled: true
+    match_type: event_chain
+    precursor_event_types: [failed_login, brute_force]
+    followup_event_types: [privilege_escalation, lateral_movement]
+    match_fields: [username, hostname]
+    time_window_minutes: 60
+    minimum_alerts: 2
+  - id: same_host_multi_stage_activity
+    description: Group multi-stage synthetic activity involving the same lab hostname within 90 minutes.
+    enabled: true
+    match_type: multi_stage_same_host
+    field: hostname
+    minimum_distinct_event_types: 2
+    time_window_minutes: 90
+    minimum_alerts: 2

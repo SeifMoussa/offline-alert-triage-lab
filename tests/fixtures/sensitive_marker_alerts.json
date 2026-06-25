@@ -1,0 +1,47 @@
+[
+  {
+    "alert_id": "sensitive-marker-0001",
+    "timestamp": "2026-01-16T12:00:00Z",
+    "source_ip": "10.2.1.10",
+    "dest_ip": "10.2.1.20",
+    "source_port": 50010,
+    "dest_port": 443,
+    "username": "analyst_user",
+    "hostname": "workstation-01.test",
+    "event_type": "policy_violation",
+    "raw_message": "Synthetic marker only: SYNTHETIC_PASSWORD_MARKER.",
+    "count": 1,
+    "tags": ["synthetic", "sensitive-marker"],
+    "synthetic_marker": true
+  },
+  {
+    "alert_id": "sensitive-marker-0002",
+    "timestamp": "2026-01-16T12:05:00Z",
+    "source_ip": "192.168.2.10",
+    "dest_ip": "192.168.2.20",
+    "source_port": 50011,
+    "dest_port": 443,
+    "username": "demo_user",
+    "hostname": "server-01.test",
+    "event_type": "unknown",
+    "raw_message": "Synthetic marker only: SYNTHETIC_TOKEN_MARKER.",
+    "count": 1,
+    "tags": ["synthetic", "sensitive-marker"],
+    "synthetic_marker": true
+  },
+  {
+    "alert_id": "sensitive-marker-0003",
+    "timestamp": "2026-01-16T12:10:00Z",
+    "source_ip": "198.51.100.10",
+    "dest_ip": "203.0.113.10",
+    "source_port": 50012,
+    "dest_port": 443,
+    "username": "service_account_test",
+    "hostname": "file-server.test",
+    "event_type": "policy_violation",
+    "raw_message": "Synthetic marker only: SYNTHETIC_SECRET_MARKER.",
+    "count": 1,
+    "tags": ["synthetic", "sensitive-marker"],
+    "synthetic_marker": true
+  }
+]

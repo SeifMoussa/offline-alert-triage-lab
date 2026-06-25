@@ -1,0 +1,79 @@
+name: offline-alert-triage-local-mitre-mapping
+version: 1
+status: phase_5_static_mitre_mapping
+description: Static local educational MITRE ATT&CK mappings for synthetic alerts.
+safety:
+  offline_only: true
+  synthetic_data_only: true
+  network_calls: false
+  external_ai: false
+  external_threat_intelligence: false
+  external_mitre_api: false
+
+mappings:
+  failed_login:
+    - tactic: Credential Access
+      technique_id: T1110
+      technique_name: Brute Force
+      confidence: medium
+      rationale: Failed login alerts can be associated with brute-force attempts in synthetic lab data.
+  brute_force:
+    - tactic: Credential Access
+      technique_id: T1110
+      technique_name: Brute Force
+      confidence: high
+      rationale: Repeated failed authentication attempts map to brute-force behavior in the local lab model.
+  port_scan:
+    - tactic: Discovery
+      technique_id: T1046
+      technique_name: Network Service Discovery
+      confidence: high
+      rationale: Multiple connection attempts to services map to service discovery in the local lab model.
+  privilege_escalation:
+    - tactic: Privilege Escalation
+      technique_id: T1068
+      technique_name: Exploitation for Privilege Escalation
+      confidence: medium
+      rationale: Synthetic privilege-change indicators are mapped to privilege escalation for analyst training.
+  lateral_movement:
+    - tactic: Lateral Movement
+      technique_id: T1021
+      technique_name: Remote Services
+      confidence: high
+      rationale: Synthetic remote access between lab hosts maps to remote services.
+  data_exfiltration:
+    - tactic: Exfiltration
+      technique_id: T1041
+      technique_name: Exfiltration Over C2 Channel
+      confidence: medium
+      rationale: Synthetic outbound transfer markers map to exfiltration behavior for local training.
+  c2_beacon:
+    - tactic: Command and Control
+      technique_id: T1071
+      technique_name: Application Layer Protocol
+      confidence: high
+      rationale: Synthetic periodic outbound connection markers map to application-layer command and control.
+  malware_detected:
+    - tactic: Execution
+      technique_id: T1204
+      technique_name: User Execution
+      confidence: medium
+      rationale: Synthetic endpoint detection markers are mapped to execution for lab training.
+  anomalous_login_time:
+    - tactic: Defense Evasion
+      technique_id: T1078
+      technique_name: Valid Accounts
+      confidence: medium
+      rationale: Synthetic unexpected login timing can be reviewed as valid-account misuse in the lab model.
+  policy_violation:
+    - tactic: Policy Event
+      technique_id: null
+      technique_name: No direct ATT&CK mapping
+      confidence: low
+      rationale: Policy events may not map directly to ATT&CK and are retained for local analyst context.
+  unknown:
+    - tactic: Unknown
+      technique_id: null
+      technique_name: Unknown mapping placeholder
+      confidence: low
+      rationale: Unknown synthetic alerts use a local documented fallback placeholder.

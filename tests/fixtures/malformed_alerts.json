@@ -1,0 +1,31 @@
+[
+  {
+    "alert_id": "malformed-0001",
+    "timestamp": "not-a-timestamp",
+    "source_ip": "10.1.1.10",
+    "dest_ip": "10.1.1.20",
+    "hostname": "workstation-01.test",
+    "event_type": "failed_login",
+    "raw_message": "Synthetic malformed fixture with invalid timestamp.",
+    "synthetic_marker": true
+  },
+  {
+    "alert_id": "malformed-0002",
+    "timestamp": "2026-01-16T10:20:00Z",
+    "source_ip": "10.1.1.11",
+    "hostname": "server-01.test",
+    "event_type": "unknown",
+    "raw_message": "Synthetic malformed fixture missing dest_ip.",
+    "synthetic_marker": true
+  },
+  {
+    "alert_id": "malformed-0003",
+    "timestamp": "2026-01-16T10:25:00Z",
+    "source_ip": "10.1.1.12",
+    "dest_ip": "10.1.1.22",
+    "hostname": "file-server.test",
+    "event_type": "not_supported_yet",
+    "raw_message": "Synthetic malformed fixture with unsupported event type.",
+    "synthetic_marker": true
+  }
+]

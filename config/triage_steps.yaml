@@ -1,0 +1,107 @@
+name: offline-alert-triage-local-playbooks
+version: 1
+status: phase_6_static_triage_playbooks
+description: Local defensive triage step catalog for synthetic alerts.
+safety:
+  offline_only: true
+  synthetic_data_only: true
+  network_calls: false
+  external_ai: false
+  external_threat_intelligence: false
+
+steps:
+  - id: TRIAGE-AUTH-LOW
+    title: Review synthetic authentication context
+    applies_to_event_types: [failed_login]
+    applies_to_severities: [LOW, MEDIUM]
+    order: 10
+    description: Review the local synthetic alert fields for username, source IP, destination IP, and count.
+    safety_note: Use only the provided local fixture data.
+  - id: TRIAGE-BRUTE-HIGH
+    title: Compare repeated authentication alerts
+    applies_to_event_types: [brute_force]
+    applies_to_severities: [HIGH, CRITICAL]
+    order: 20
+    description: Compare related synthetic alerts for repeated username, host, and source IP patterns.
+    safety_note: Do not test credentials or contact any external service.
+  - id: TRIAGE-PORTSCAN-MEDIUM
+    title: Review local service-attempt pattern
+    applies_to_event_types: [port_scan]
+    applies_to_severities: [MEDIUM, HIGH]
+    order: 30
+    description: Review destination ports and affected synthetic hosts in the local alert set.
+    safety_note: Do not scan hosts or run network tools.
+  - id: TRIAGE-PRIVESC-HIGH
+    title: Review synthetic privilege-change context
+    applies_to_event_types: [privilege_escalation]
+    applies_to_severities: [HIGH, CRITICAL]
+    order: 40
+    description: Check whether the synthetic username is listed as privileged and compare nearby alerts.
+    safety_note: Use only local lab records and do not run system-modifying commands.
+  - id: TRIAGE-EXFIL-CRITICAL
+    title: Review synthetic outbound transfer indicators
+    applies_to_event_types: [data_exfiltration]
+    applies_to_severities: [HIGH, CRITICAL]
+    order: 50
+    description: Review local count, source host, destination IP, and related synthetic data-movement tags.
+    safety_note: Do not contact external destinations or enrich with live services.
+  - id: TRIAGE-LATERAL-HIGH
+    title: Compare related synthetic host movement
+    applies_to_event_types: [lateral_movement]
+    applies_to_severities: [HIGH, CRITICAL]
+    order: 60
+    description: Compare synthetic source, destination, username, and administrative port fields.
+    safety_note: Do not attempt remote access or execute administrative tooling.
+  - id: TRIAGE-MALWARE-HIGH
+    title: Review synthetic endpoint detection marker
+    applies_to_event_types: [malware_detected]
+    applies_to_severities: [HIGH, CRITICAL]
+    order: 70
+    description: Review the local synthetic endpoint alert and preserve report context for later analysis.
+    safety_note: Do not execute files, samples, or external lookup tools.
+  - id: TRIAGE-C2-CRITICAL
+    title: Review synthetic periodic outbound pattern
+    applies_to_event_types: [c2_beacon]
+    applies_to_severities: [HIGH, CRITICAL]
+    order: 80
+    description: Review local periodic count, destination IP, hostname, and related synthetic alerts.
+    safety_note: Do not contact any destination or perform live enrichment.
+  - id: TRIAGE-POLICY-LOW
+    title: Review synthetic policy context
+    applies_to_event_types: [policy_violation]
+    applies_to_severities: [LOW, MEDIUM]
+    order: 90
+    description: Review the local synthetic policy message, username, host, and tags.
+    safety_note: Treat the event as lab-only and do not use real user data.
+  - id: TRIAGE-TIME-MEDIUM
+    title: Review synthetic anomalous login timing
+    applies_to_event_types: [anomalous_login_time]
+    applies_to_severities: [MEDIUM, HIGH]
+    order: 100
+    description: Review timestamp, username, hostname, and related synthetic authentication alerts.
+    safety_note: Do not query external identity systems.
+  - id: TRIAGE-UNKNOWN-LOW
+    title: Preserve unknown synthetic alert for review
+    applies_to_event_types: [unknown]
+    applies_to_severities: [LOW, MEDIUM, HIGH, CRITICAL]
+    order: 110
+    description: Preserve the unknown synthetic alert and document which fields are available.
+    safety_note: Do not infer live behavior or perform external lookups.
+  - id: TRIAGE-GLOBAL-FALLBACK
+    title: Document synthetic alert review
+    applies_to_event_types:
+      - failed_login
+      - brute_force
+      - port_scan
+      - privilege_escalation
+      - data_exfiltration
+      - lateral_movement
+      - malware_detected
+      - c2_beacon
+      - policy_violation
+      - anomalous_login_time
+      - unknown
+    applies_to_severities: [LOW, MEDIUM, HIGH, CRITICAL]
+    order: 1000
+    description: Document the local synthetic alert details, validation status, severity, and mapped context.
+    safety_note: Keep review offline and avoid live systems or external lookups.

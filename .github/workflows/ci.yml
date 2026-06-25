@@ -1,0 +1,122 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]"
+
+      - name: Ruff lint
+        run: python -m ruff check .
+
+      - name: Ruff format check
+        run: python -m ruff format --check .
+
+      - name: Pytest with coverage
+        run: |
+          python -m pytest --cov=triage_lab --cov-report=term-missing --cov-report=xml --cov-fail-under=97
+
+  docs-safety-checks:
+    name: Docs Safety Checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install package
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]"
+
+      - name: Run docs safety checks
+        run: python scripts/check-docs.py
+
+  cli-smoke:
+    name: CLI Smoke
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install package
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]"
+
+      - name: Run CLI smoke commands
+        run: |
+          python -m triage_lab --help > cli_help.txt
+          python -m triage_lab --version > cli_version.txt
+          python -m triage_lab inventory --input alerts --format json > inventory.json
+          python -m triage_lab validate-alerts --input alerts/sample_alerts.json --format json > validate.json
+          python -m triage_lab classify-alerts --input alerts/sample_alerts.json --format json > classify.json
+          python -m triage_lab map-mitre --input alerts/sample_alerts.json --format json > mitre.json
+          python -m triage_lab explain-alerts --input alerts/sample_alerts.json --format json > explain.json
+          python -m triage_lab group-incidents --input alerts/sample_alerts.json --format json > group.json
+          python -m triage_lab redact-check --input alerts/sample_alerts.json --format json > redact.json
+          python -m triage_lab report --input alerts/sample_alerts.json --output reports/examples --format both > report.json
+
+      - name: Scan CLI and report outputs
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          forbidden = (
+              "SYNTHETIC_PASSWORD_MARKER",
+              "SYNTHETIC_TOKEN_MARKER",
+              "SYNTHETIC_SECRET_MARKER",
+              "password=",
+              "token=",
+              "secret=",
+              "api_key=",
+              "private_key",
+              "raw_message",
+          )
+          files = [
+              "cli_help.txt",
+              "cli_version.txt",
+              "inventory.json",
+              "validate.json",
+              "classify.json",
+              "mitre.json",
+              "explain.json",
+              "group.json",
+              "redact.json",
+              "report.json",
+              "reports/examples/security_alert_triage_report.json",
+              "reports/examples/security_alert_triage_report.md",
+          ]
+          combined = "\n".join(Path(name).read_text(encoding="utf-8") for name in files)
+          hits = [needle for needle in forbidden if needle in combined]
+          if hits:
+              raise SystemExit(f"Forbidden output patterns found: {', '.join(hits)}")
+          PY
