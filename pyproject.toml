@@ -9,7 +9,7 @@ description = "Offline-only deterministic security alert triage lab for syntheti
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
-authors = [{ name = "AI-Assisted Security Alert Triage Lab Maintainers" }]
+authors = [{ name = "Seif Hegazy" }]
 keywords = ["security", "triage", "offline", "deterministic", "synthetic-data"]
 classifiers = [
     "Development Status :: 2 - Pre-Alpha",
