@@ -20,6 +20,14 @@ The "AI-assisted" label is intentionally narrow and honest:
 - No stochastic output.
 - Every decision is traceable through local rules, mappings, and templates.
 
+## Why I Built This
+
+I wanted to explore where an AI-assisted workflow concept is useful without sending alert data to a model or hiding decisions behind a black box. Offline alert triage gave me a practical boundary: the tool can normalize alerts, apply deterministic scoring, map ATT&CK techniques, and draft analyst-style context while keeping every result reproducible. The redaction layer matters as much as the scoring because JSON and Markdown reports are the point where sensitive source fields could otherwise leak.
+
+## What Was Harder Than Expected
+
+The difficult part was keeping the redaction and safety boundary intact across every output path, not writing the first severity rule. Raw messages, addresses, usernames, and credential-looking assignments can appear in nested alert data, validation errors, grouped incidents, and both report formats. I ended up treating deterministic traces and report scans as part of the feature: an analyst should be able to see why a score changed without recovering the value that was removed.
+
 ## Project Goal
 
 The lab demonstrates how a junior security automation or blue-team workflow can
@@ -144,7 +152,7 @@ scan.
 Current verified local status:
 
 - 256 tests passed.
-- 97.29% coverage.
+- 97.30% coverage.
 - 97% coverage gate passed.
 - Ruff check passed.
 - Ruff format check passed.
@@ -188,27 +196,40 @@ Key package areas:
 - `redaction`: report-safe serialization and validation.
 - `reporting`: report models, pipeline, renderers, and writer.
 
-## Limitations
+## Known Limitations
 
 - Educational lab only; not a production SOC platform.
-- Synthetic alert data only.
+- Synthetic/demo alerts only; no real customer data belongs in this repository.
+- It is not connected to a live SIEM, EDR, ticketing system, or threat-intelligence feed.
+- The AI-assisted workflow is deterministic analyst support, not an autonomous SOC decision-maker.
 - JSON-focused ingestion; CSV ingestion is intentionally out of scope for
   v0.1.0.
 - Local static MITRE examples are not a live ATT&CK data sync.
-- No SIEM, EDR, cloud, ticketing, LLM, or external threat-intelligence
-  integrations.
 - Hosted CI, hosted CodeQL, branch protection, tags, and release verification
   remain pending until publishing.
 
-## Roadmap
+## What I Would Improve Next
 
-- Publish repository after explicit approval.
-- Verify hosted GitHub Actions and hosted CodeQL after publishing.
-- Review code scanning, secret scanning, and Dependabot results.
-- Configure branch protection after hosted checks exist.
-- Create the v0.1.0 tag and GitHub Release after final approval.
-- Consider additional synthetic fixtures and report screenshots for portfolio
-  presentation.
+I would add a small adapter interface for importing exported SIEM alerts while keeping network access outside the core package. I would also expand the synthetic fixtures around nested vendor fields and make redaction failures easier to diagnose without echoing unsafe values. Any future model-backed experiment would need to sit behind the existing deterministic and redacted workflow, not replace its traceable scoring or become an automatic incident decision.
+
+## How to Verify It Works
+
+Install the development dependencies, then run both supported pytest entry points and the repository checks:
+
+```bash
+python -m pip install -e ".[dev]"
+pytest
+python -m pytest
+python -m pytest --cov=triage_lab --cov-report=term-missing --cov-fail-under=97
+python -m ruff check .
+python -m ruff format --check .
+python scripts/check-docs.py
+python -m py_compile scripts/check-docs.py
+python -m triage_lab redact-check --input alerts/sample_alerts.json --format json
+python -m triage_lab report --input alerts/sample_alerts.json --output reports/examples --format both
+```
+
+The current suite has 256 passing tests and 97.30% coverage. Passing tests and safe sample reports demonstrate the lab's intended behavior, not production readiness.
 
 ## License
 
