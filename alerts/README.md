@@ -2,7 +2,7 @@
 
 This directory is reserved for synthetic local alert samples.
 
-Phase 1 does not implement ingestion. Future alert fixtures must use only
+The initial scaffold does not implement ingestion. Alert fixtures must use only
 approved private lab ranges, reserved documentation IP ranges, and safe example
 domains such as `example.com`, `example.org`, `example.net`, or `.test`.
 

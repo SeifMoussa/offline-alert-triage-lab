@@ -1,6 +1,6 @@
 # Incident Grouping
 
-Phase 7 implements deterministic incident grouping for local synthetic alerts.
+The pipeline implements deterministic incident grouping for local synthetic alerts.
 The grouping engine is rule-based, explainable, reproducible, and offline-only.
 It does not use LLM calls, external AI APIs, API keys, network calls, external
 MITRE APIs, threat intelligence services, scanning, exploit code, or response
@@ -20,7 +20,7 @@ The grouping stage does not mutate original alert models and does not print
 ## Rules
 
 Rules are loaded from `config/grouping_rules.yaml` as local YAML data only.
-Supported Phase 7 rule types include:
+Supported rule types include:
 
 - Same source IP within a time window.
 - Same username within a time window.
@@ -43,12 +43,12 @@ Source IPs and usernames are redacted as placeholders. Safe `.test` hostnames ma
 remain visible. Raw sensitive marker constants, credentials, tokens, and raw
 messages are not included in incident output.
 
-Phase 8 routes `group-incidents` CLI output through the final deterministic
+The output boundary routes `group-incidents` CLI output through the final deterministic
 redaction serializer. The serializer validates that report-ready output has no
 raw approved marker constants, credential-looking assignments, unredacted
 `source_ip` or `dest_ip` values, email-like usernames, or `raw_message` fields.
 
-Phase 9 reports include incident summaries and incident details generated from
+Reports include incident summaries and incident details generated from
 the redacted grouping output. Reports preserve incident IDs, event types,
 timestamps, correlation rule IDs, safe `.test` hostnames, and MITRE context
 without exposing raw source IPs, raw destination IPs, usernames, raw messages,

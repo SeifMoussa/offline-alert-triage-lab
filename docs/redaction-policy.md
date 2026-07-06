@@ -1,7 +1,7 @@
 # Redaction Policy
 
-Phase 8 implements deterministic redaction and safe serialization for CLI output
-and report-ready payloads. Phase 9 reports consume this layer before JSON and
+The output boundary implements deterministic redaction and safe serialization for CLI output
+and report-ready payloads. Reports consume this layer before JSON and
 Markdown rendering.
 
 The redaction layer is local, rule-based, auditable, reproducible, and fully
@@ -65,7 +65,7 @@ email-looking usernames, or `raw_message` fields under the default policy.
 
 ## Scope Boundary
 
-Phase 9 JSON and Markdown reports use this safe serialization layer. Reports
+JSON and Markdown reports use this safe serialization layer. Reports
 must not contain raw marker constants, raw messages, raw IP values, raw
 usernames, or credential-looking assignments.
 

@@ -35,9 +35,9 @@ The package provides constants and summary text in `triage_lab.safety`. The
 pipeline enforces these boundaries during path validation, alert validation,
 redaction, report generation, and documentation safety checks.
 
-## Phase 2 Dataset and Config Safety
+## Dataset and Config Safety
 
-Phase 2 adds synthetic JSON fixtures and local YAML configuration. These files
+The repository uses synthetic JSON fixtures and local YAML configuration. These files
 must remain offline-only and synthetic. They must not contain real usernames,
 emails, passwords, tokens, hostnames, company names, customer data, public
 production IP addresses, external enrichment URLs, or executable integrations.
@@ -50,9 +50,9 @@ The approved fake sensitive marker constants are:
 
 These are documentation and test markers only. They are not secrets.
 
-## Phase 3 Ingestion Safety
+## Ingestion Safety
 
-Phase 3 reads local JSON files only. It accepts JSON arrays, single JSON alert
+Ingestion reads local JSON files only. It accepts JSON arrays, single JSON alert
 objects, and simple newline-delimited JSON records. It rejects URLs, network
 paths, and parent-directory traversal before reading input.
 
@@ -61,9 +61,9 @@ external services, perform enrichment, scan hosts, execute tooling, or use
 external AI. Sensitive-looking values and approved fake marker constants are
 masked in CLI error output.
 
-## Phase 4 Classification Safety
+## Classification Safety
 
-Phase 4 classification is local, rule-based, deterministic, and explainable. It
+Classification is local, rule-based, deterministic, and explainable. It
 loads `config/rules.yaml` from disk, validates the config safety flags, and
 rejects URL, network, or path-traversal config paths.
 
@@ -72,9 +72,9 @@ AI APIs, request API keys, or call threat intelligence services. CLI
 classification output does not include full `raw_message` content or raw
 sensitive marker constants.
 
-## Phase 5 MITRE Mapping Safety
+## MITRE Mapping Safety
 
-Phase 5 MITRE mapping is local, static, deterministic, and auditable. It loads
+MITRE mapping is local, static, deterministic, and auditable. It loads
 `config/mitre_mapping.yaml` from disk and rejects URL, network, or
 path-traversal config paths.
 
@@ -83,9 +83,9 @@ IDs. The mapper does not call the MITRE website, external MITRE APIs, external
 threat intelligence services, or external AI APIs. CLI mapping output does not
 include full `raw_message` content or raw sensitive marker constants.
 
-## Phase 6 Explanation and Triage Safety
+## Explanation and Triage Safety
 
-Phase 6 explanations are deterministic, template-driven, reproducible, and
+Explanations are deterministic, template-driven, reproducible, and
 auditable. They are generated from local validation, classification, MITRE
 mapping, and playbook data only.
 
@@ -94,16 +94,16 @@ network calls, threat intelligence lookups, live scanning, or stochastic output.
 It omits full `raw_message` content by default and sanitizes approved fake
 sensitive marker constants before returning CLI output.
 
-Phase 6 triage recommendations are defensive playbook suggestions loaded from
+Triage recommendations are defensive playbook suggestions loaded from
 local YAML. They focus on verifying alert source, reviewing local logs, checking
 affected synthetic accounts and hosts, preserving evidence, documenting
 findings, and escalating high or critical synthetic alerts. They do not instruct
 the user to run offensive tools, contact live systems, test credentials, or
 perform destructive actions.
 
-## Phase 7 Incident Grouping Safety
+## Incident Grouping Safety
 
-Phase 7 incident grouping is local, rule-based, deterministic, reproducible, and
+Incident grouping is local, rule-based, deterministic, reproducible, and
 auditable. It loads `config/grouping_rules.yaml` from disk and rejects URL,
 network, or path-traversal config paths.
 
@@ -117,9 +117,9 @@ represented as redacted placeholders, while safe `.test` hostnames may remain
 visible. Correlation reasons include rule IDs, matched field names, time-window
 settings, and contributing synthetic alert IDs only.
 
-## Phase 8 Redaction Safety
+## Redaction Safety
 
-Phase 8 added the deterministic redaction engine and safe serialization layer
+The deterministic redaction engine and safe serialization layer operate
 for CLI output and report-ready payloads. It remains offline-only, local,
 rule-based, reproducible, and auditable.
 
@@ -138,10 +138,10 @@ credential-looking assignments, raw IP fields, email-looking usernames, or
 MITRE IDs/names, tactics, template IDs, playbook IDs, correlation rule IDs, and
 timestamps may remain visible.
 
-## Phase 9 Reporting Safety
+## Reporting Safety
 
-Phase 9 adds deterministic JSON and Markdown reports. Reports are generated from
-synthetic local alert data only and pass through the Phase 8 safe serializer and
+The reporting layer adds deterministic JSON and Markdown reports. Reports are generated from
+synthetic local alert data only and pass through the safe serializer and
 redaction layer before rendering.
 
 Reports do not include `raw_message`, raw source IP values, raw destination IP

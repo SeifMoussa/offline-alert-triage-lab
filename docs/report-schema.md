@@ -1,9 +1,9 @@
 # Report Schema
 
-Phase 9 implements deterministic JSON and Markdown report generation.
+The reporting layer implements deterministic JSON and Markdown generation.
 
-Reports are generated from synthetic local alert data only and consume the Phase
-8 deterministic redaction and safe serialization layer.
+Reports are generated from synthetic local alert data only and consume the
+deterministic redaction and safe serialization layer.
 
 ## JSON Sections
 
