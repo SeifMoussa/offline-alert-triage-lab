@@ -202,7 +202,7 @@ Deliverables:
 - Example reports under `reports/examples`.
 - README usage walkthrough.
 - Testing report.
-- Completion checklist.
+- Release-readiness documentation.
 
 ### CI, CodeQL, Dependabot, and Release Workflow
 
@@ -634,7 +634,7 @@ Required documentation:
 - `README.md`: project overview, safety boundaries, installation, CLI usage, examples.
 - `SECURITY.md`: safety model, supported data boundaries, vulnerability reporting guidance.
 - `TESTING_REPORT.md`: test commands, coverage summary, known gaps.
-- `PROJECT_COMPLETION_CHECKLIST.md`: phase completion checklist.
+- `docs/release-checklist.md`: current release-readiness requirements.
 - `CHANGELOG.md`: release notes once releases begin.
 - `docs/phase-0-plan.md`: this plan.
 
@@ -677,7 +677,7 @@ Release readiness requirements:
 - Safety fixtures passing.
 - Example reports regenerated.
 - Documentation updated.
-- Completion checklist finished.
+- Release checklist reviewed.
 
 ## 18. Risks and Scope-Creep Controls
 
@@ -763,7 +763,7 @@ LICENSE
 CHANGELOG.md
 SECURITY.md
 TESTING_REPORT.md
-PROJECT_COMPLETION_CHECKLIST.md
+docs/release-checklist.md
 ```
 
 The scaffold should not create:
