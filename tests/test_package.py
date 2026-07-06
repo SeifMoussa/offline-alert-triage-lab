@@ -28,7 +28,7 @@ def test_important_docs_exist() -> None:
         ROOT / "README.md",
         ROOT / "SECURITY.md",
         ROOT / "TESTING_REPORT.md",
-        ROOT / "PROJECT_COMPLETION_CHECKLIST.md",
+        ROOT / "docs" / "redaction-policy.md",
         ROOT / "docs" / "phase-0-plan.md",
         ROOT / "docs" / "safety-model.md",
         ROOT / "docs" / "design-decisions.md",

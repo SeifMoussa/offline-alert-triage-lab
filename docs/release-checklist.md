@@ -25,7 +25,7 @@ Before publishing or creating any release:
 - Regenerate example reports from synthetic data.
 - Update `CHANGELOG.md`.
 - Update `TESTING_REPORT.md`.
-- Complete `PROJECT_COMPLETION_CHECKLIST.md`.
+- Review this release checklist against the current repository state.
 
 Do not mark these items complete before the relevant hosted or publishing action
 actually occurs:
