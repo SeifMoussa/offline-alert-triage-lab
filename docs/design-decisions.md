@@ -15,33 +15,33 @@ as external AI or stochastic generation.
 - Use static local MITRE mapping data and no external MITRE or threat
   intelligence calls.
 - Use fake marker constants only for sensitive-data test coverage.
-- Implement Phase 3 loading for JSON arrays, single JSON objects, and simple
+- Implement loading for JSON arrays, single JSON objects, and simple
   NDJSON while deferring CSV.
 - Reject URLs, network paths, and parent-directory traversal before reading
   input paths.
 - Return structured parse errors instead of raising uncaught CLI exceptions for
   malformed or invalid alert input.
-- Load Phase 4 severity behavior from local YAML instead of hardcoding the
+- Load severity behavior from local YAML instead of hardcoding the
   ruleset in Python.
 - Keep classification output safe by omitting `raw_message` and exposing only
   rule IDs, severity transitions, and sanitized reasons.
 - Apply modifiers in YAML order so results are deterministic and testable.
-- Load Phase 5 MITRE behavior from local YAML and generate MITRE URLs as static
+- Load MITRE behavior from local YAML and generate MITRE URLs as static
   strings from technique IDs.
 - Treat policy and unknown events as local fallback mappings rather than forcing
   an ATT&CK technique where no direct mapping is configured.
-- Generate Phase 6 analyst-style explanations with deterministic local
+- Generate analyst-style explanations with deterministic local
   templates, never LLM calls or stochastic text generation.
-- Select Phase 6 triage recommendations from local YAML playbooks using
+- Select triage recommendations from local YAML playbooks using
   event-type, severity, event fallback, and documented global fallback matching.
 - Omit `raw_message` from explanation CLI output by default and sanitize fake
   sensitive marker constants in generated text.
-- Implement Phase 7 incident grouping as deterministic graph correlation:
+- Implement incident grouping as deterministic graph correlation:
   grouping rules create alert edges, connected components become incidents, and
   incident IDs are assigned after stable sorting.
 - Redact source IPs and usernames in incident output while allowing safe `.test`
   hostnames to remain visible.
-- Implement Phase 8 redaction as a centralized deterministic safe serialization
+- Implement redaction as a centralized deterministic safe serialization
   layer rather than scattered output checks.
 - Remove `raw_message` fields by default for report-ready serialization.
 - Redact `source_ip`, `dest_ip`, `username`, approved fake marker constants, and
@@ -51,11 +51,11 @@ as external AI or stochastic generation.
   IDs, correlation rule IDs, timestamps, and safe `.test` hostnames.
 - Add `redact-check` as a narrow validation command for redacted grouped output;
   it does not generate reports.
-- Implement Phase 9 reports as renderers over one safe `SecurityReport` model
+- Implement reports as renderers over one safe `SecurityReport` model
   instead of separate JSON and Markdown data paths.
 - Use a deterministic default report timestamp for stable tests and example
   reports.
-- Route report payloads through the Phase 8 redaction/safe serialization layer
+- Route report payloads through the redaction/safe serialization layer
   before rendering.
 - Reject unsafe report output paths with the existing local path validator.
 - Configure GitHub workflows, CodeQL, and Dependabot locally only; defer hosted

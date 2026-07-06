@@ -1,12 +1,12 @@
 # Configuration
 
-Phase 2 populated local YAML configuration files for deterministic triage logic.
-Phase 4 executes severity rules in `config/rules.yaml`. Phase 5 executes local
-static MITRE mappings in `config/mitre_mapping.yaml`. Phase 6 selects defensive
+Local YAML configuration files define deterministic triage logic.
+Severity classification executes rules in `config/rules.yaml`. MITRE mapping executes local
+static mappings in `config/mitre_mapping.yaml`. Explanation and triage processing selects defensive
 triage recommendations from `config/triage_steps.yaml` and uses deterministic
-templates for analyst-style explanations. Phase 7 groups alerts into incidents
-using `config/grouping_rules.yaml`. Phase 8 adds deterministic redaction and
-safe serialization. Phase 9 adds deterministic Markdown and JSON reporting.
+templates for analyst-style explanations. Incident processing groups alerts
+using `config/grouping_rules.yaml`. The output boundary applies deterministic redaction and
+safe serialization. Reporting produces deterministic Markdown and JSON output.
 
 The configuration files are local data only. They do not define network calls,
 external AI API integrations, threat intelligence lookups, executable commands,
@@ -36,13 +36,13 @@ Config values must remain deterministic and inspectable. YAML is treated as data
 only, never as executable logic. Pipeline engines load these files from disk and
 apply transparent rules with traceable decisions.
 
-## Phase 4 Classification Rules
+## Classification Rules
 
 The classifier loads base severity from local YAML. Modifier rules are applied in
 the order they appear in `config/rules.yaml`, and severity is capped at
 `CRITICAL`.
 
-Implemented Phase 4 modifiers:
+Implemented classification modifiers:
 
 - `count >= 100`: raise by one level.
 - `count >= 500`: raise by two levels.
@@ -53,7 +53,7 @@ Implemented Phase 4 modifiers:
 - Approved synthetic marker regex in `raw_message`: raise by one level without
   exposing the marker value in CLI output.
 
-Implemented Phase 4 override:
+Implemented classification override:
 
 - Known synthetic bad source IP: override final severity to `CRITICAL`.
 
@@ -61,7 +61,7 @@ No config file should contain API keys, real credentials, real tokens, real
 customer data, public production IPs, real domains, external enrichment URLs, or
 offensive-tool execution instructions.
 
-## Phase 5 MITRE Mapping
+## MITRE Mapping
 
 `config/mitre_mapping.yaml` contains local static mappings from synthetic event
 types to educational MITRE ATT&CK examples. The mapper supports multiple
@@ -73,7 +73,7 @@ MITRE URLs are generated as static reference strings from technique IDs, such as
 MITRE website, external MITRE APIs, external threat intelligence, or external AI
 services.
 
-## Phase 6 Explanations and Triage Playbooks
+## Explanations and Triage Playbooks
 
 `config/triage_steps.yaml` contains local defensive playbook steps. The selector
 first looks for event-type and severity matches, then event-type fallbacks, then
@@ -88,7 +88,7 @@ CLI explanation output omits `raw_message` by default and sanitizes approved fak
 sensitive markers before returning summaries, reasoning, evidence points, and
 triage recommendations.
 
-## Phase 7 Incident Grouping
+## Incident Grouping
 
 `config/grouping_rules.yaml` contains local, deterministic correlation rules.
 The grouping engine applies enabled rules, creates alert-to-alert correlation
@@ -108,7 +108,7 @@ Grouping output is explainable through correlation reason records. It does not
 include `raw_message`, real credentials, API keys, external lookups, live
 network calls, or external AI behavior.
 
-## Phase 8 Redaction and Safe Serialization
+## Redaction and Safe Serialization
 
 The default redaction policy is code-defined as `default-report-safe-v1`; it is
 not an executable config file. The serializer removes `raw_message` fields by
@@ -123,7 +123,7 @@ IDs, incident IDs, correlation rule IDs, timestamps, and safe `.test` hostnames.
 The redaction layer remains deterministic, offline-only, and local. It makes no
 network calls and uses no external AI APIs, LLM calls, or API keys.
 
-## Phase 9 Reporting
+## Reporting
 
 Reports use the existing local YAML configuration indirectly through the
 pipeline stages. The `report` command supports optional local config flags for

@@ -3,7 +3,7 @@
 The test suite must preserve the project's defensive, offline-only,
 synthetic-data safety model.
 
-## Phase 1 Commands
+## Core Quality Commands
 
 ```bash
 python -m pytest
@@ -15,7 +15,7 @@ python -m triage_lab --version
 
 ## Current Coverage
 
-Phase 1 tests verify:
+Scaffold tests verify:
 
 - Package importability.
 - Version metadata.
@@ -23,7 +23,7 @@ Phase 1 tests verify:
 - Safety summary wording.
 - Presence of config and documentation placeholders.
 
-Phase 2 tests verify:
+Dataset and configuration tests verify:
 
 - Expected JSON fixture and YAML config files exist.
 - JSON fixtures are parseable.
@@ -36,7 +36,7 @@ Phase 2 tests verify:
 - Config files do not define network behavior, API-key placeholders, or
   executable offensive-tool integrations.
 
-Phase 3 tests verify:
+Ingestion tests verify:
 
 - Pydantic alert model validation.
 - Missing required fields.
@@ -53,7 +53,7 @@ Phase 3 tests verify:
 - CLI `inventory` and `validate-alerts` JSON/text output.
 - Redaction of sensitive-looking CLI error output.
 
-Phase 4 tests verify:
+Classification tests verify:
 
 - Severity enum ordering and capped severity raising.
 - Base event-type severity mappings from local YAML.
@@ -67,7 +67,7 @@ Phase 4 tests verify:
 - `classify-alerts` JSON/text CLI output.
 - No raw sensitive marker constants in classification output.
 
-Phase 5 tests verify:
+MITRE mapping tests verify:
 
 - MITRE model serialization.
 - Local MITRE mapping config loading.
@@ -81,7 +81,7 @@ Phase 5 tests verify:
 - Existing inventory, validation, classification, help, and version commands.
 - No raw sensitive marker constants in MITRE output.
 
-Phase 6 tests verify:
+Explanation and triage tests verify:
 
 - Explanation model serialization and safe output shape.
 - Deterministic template selection by event type and severity.
@@ -100,7 +100,7 @@ Phase 6 tests verify:
   version commands.
 - No network calls, external AI/API behavior, or unsafe output.
 
-Phase 7 tests verify:
+Incident grouping tests verify:
 
 - Incident and grouping model serialization.
 - Priority mapping from severity to `P1` through `P4`.
@@ -120,14 +120,14 @@ Phase 7 tests verify:
   help, and version commands.
 - No network calls, external AI/API behavior, or unsafe output.
 
-Phase 7.5 tests verify:
+Coverage-hardening tests verify:
 
 - Config loader error paths.
 - Classification condition and fallback branches.
 - MITRE, explanation, triage, grouping, ingestion, and model edge cases.
 - Coverage above 97% without removing code or weakening safety checks.
 
-Phase 8 tests verify:
+Redaction tests verify:
 
 - Redaction models and summary serialization.
 - Recursive dict, list, tuple, and set redaction.
@@ -146,7 +146,7 @@ Phase 8 tests verify:
 - Help/version still work.
 - No network calls, external AI/API behavior, or unsafe output.
 
-Phase 9 tests verify:
+Reporting tests verify:
 
 - Report model creation and summary counts.
 - Full reporting pipeline output.
@@ -162,7 +162,7 @@ Phase 9 tests verify:
   marker constants, credential-looking assignments, or private-key markers.
 - No network calls, external AI/API behavior, or unsafe output.
 
-Phase 10 tests verify:
+Automation configuration tests verify:
 
 - `.github/workflows/ci.yml` exists.
 - `.github/workflows/codeql.yml` exists.
@@ -177,7 +177,7 @@ Phase 10 tests verify:
 - Documentation does not claim publishing or releases have happened.
 - README and example reports remain consistent.
 
-## Phase 11 Local Quality Commands
+## Local Quality Commands
 
 ```bash
 python -m pytest

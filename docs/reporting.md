@@ -1,6 +1,6 @@
 # Reporting
 
-Phase 9 implements final deterministic JSON and Markdown report generation.
+The reporting layer implements final deterministic JSON and Markdown generation.
 
 Reports are generated from local synthetic alert files only. The reporting
 pipeline runs the existing local stages:
@@ -10,7 +10,7 @@ ingest -> classify -> map MITRE -> explain -> group incidents -> redact -> repor
 ```
 
 The reports are deterministic, redacted, auditable, reproducible, and fully
-testable. They use the Phase 8 safe serializer and redaction layer before report
+testable. They use the safe serializer and redaction layer before report
 rendering.
 
 ## CLI Usage

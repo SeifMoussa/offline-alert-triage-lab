@@ -1,11 +1,11 @@
-# Phase 0 Implementation Plan: AI-Assisted Security Alert Triage Lab
+# Initial Implementation Plan: AI-Assisted Security Alert Triage Lab
 
 Project name: AI-Assisted Security Alert Triage Lab  
 Repository name: offline-alert-triage-lab  
 Package name: triage_lab
 
-Phase 11 note: this document is the original implementation plan. Phases 1
-through 10 have implemented the local pipeline, redaction, reporting, local CI
+Current-status note: this document is the original implementation plan. Subsequent
+implementation milestones delivered the local pipeline, redaction, reporting, local CI
 configuration, CodeQL configuration, Dependabot configuration, and documentation
 safety checks. Hosted GitHub CI, hosted CodeQL, publishing, tags, releases, and
 branch protection remain pending until explicit approval.
@@ -30,7 +30,7 @@ The project will support:
 - CLI operation for local files.
 - Tests with a coverage target of at least 90%.
 - Ruff formatting and linting.
-- GitHub Actions CI, CodeQL, Dependabot, and release workflow in later phases only.
+- GitHub Actions CI, CodeQL, Dependabot, and release workflow after the local pipeline is stable.
 
 Out of scope:
 
@@ -89,9 +89,9 @@ Safety enforcement should be implemented in two layers:
 
 The code should never attempt to contact, scan, enrich, or verify any host, domain, or external service.
 
-## 3. Phase-by-Phase Development Roadmap
+## 3. Capability Development Roadmap
 
-### Phase 0: Planning
+### Planning
 
 Deliverables:
 
@@ -99,7 +99,7 @@ Deliverables:
 
 No source code, workflows, git initialization, tags, releases, or publishing.
 
-### Phase 1: Project Scaffold and Safety Foundation
+### Project Scaffold and Safety Foundation
 
 Goal: Create the package structure, baseline metadata, static config placeholders, synthetic fixture data, and basic safety model.
 
@@ -117,7 +117,7 @@ Deliverables:
 
 No GitHub workflows yet.
 
-### Phase 2: Ingestion and Validation
+### Ingestion and Validation
 
 Goal: Load JSON alerts from local files and report structured validation errors.
 
@@ -131,7 +131,7 @@ Deliverables:
 
 CSV ingestion remains deferred unless it is safe and simple.
 
-### Phase 3: Severity Classification Engine
+### Severity Classification Engine
 
 Goal: Implement deterministic severity scoring and rule trace output.
 
@@ -145,7 +145,7 @@ Deliverables:
 - CLI command for classification.
 - Tests for each event type, thresholds, modifiers, rule ordering, and edge cases.
 
-### Phase 4: MITRE Mapping and Explanations
+### MITRE Mapping and Explanations
 
 Goal: Add local MITRE mapping and deterministic analyst explanations.
 
@@ -157,7 +157,7 @@ Deliverables:
 - Explanation trace showing which templates and facts were used.
 - Tests for event-to-MITRE mappings and stable explanation output.
 
-### Phase 5: Triage Playbooks
+### Triage Playbooks
 
 Goal: Suggest analyst triage steps from local YAML playbooks.
 
@@ -168,7 +168,7 @@ Deliverables:
 - Step ordering and deduplication.
 - Tests for playbook selection and deterministic ordering.
 
-### Phase 6: Incident Grouping and Correlation
+### Incident Grouping and Correlation
 
 Goal: Group related alerts into incidents using deterministic rules.
 
@@ -179,7 +179,7 @@ Deliverables:
 - Grouping trace explaining why alerts were grouped.
 - Tests for grouping by shared entity, time-window boundaries, unrelated alerts, and mixed severity rollups.
 
-### Phase 7: Redaction and Reporting
+### Redaction and Reporting
 
 Goal: Redact sensitive fields and produce Markdown/JSON reports.
 
@@ -191,7 +191,7 @@ Deliverables:
 - Report model for alerts, classifications, MITRE mappings, explanations, triage steps, incidents, redaction metadata, and tool version.
 - Tests for redaction coverage, report schema, deterministic output, and Markdown content.
 
-### Phase 8: CLI Completion and Documentation
+### CLI Completion and Documentation
 
 Goal: Provide a complete local CLI workflow and user documentation.
 
@@ -204,7 +204,7 @@ Deliverables:
 - Testing report.
 - Completion checklist.
 
-### Phase 9: CI, CodeQL, Dependabot, and Release Workflow
+### CI, CodeQL, Dependabot, and Release Workflow
 
 Goal: Add repository automation after the local project is stable.
 
@@ -588,7 +588,7 @@ Potential implementation library:
 - `typer` for CLI ergonomics, if dependency footprint is acceptable.
 - `argparse` if minimal dependencies are preferred.
 
-Recommended initial choice: `typer`, unless Phase 1 decides to keep dependencies minimal.
+Recommended initial choice: `typer`, unless the scaffold keeps dependencies minimal.
 
 ## 15. Test Strategy
 
@@ -645,7 +645,7 @@ Documentation must consistently state:
 - The AI-assisted component is deterministic and rule-based.
 - No external APIs, LLMs, scanning, or offensive tooling are used.
 
-## 17. CI, CodeQL, and Release Strategy for Later Phases
+## 17. CI, CodeQL, and Release Strategy
 
 CI should be added only after core local functionality exists.
 
@@ -703,11 +703,11 @@ Risk: Reports could become a large analytics system.
 Control: Limit reports to concise Markdown and JSON outputs.
 
 Risk: CI/release work could distract from core behavior.  
-Control: Defer workflows and release automation until later phases.
+Control: Defer workflows and release automation until core behavior is stable.
 
-## 19. Exact Recommended Phase 1 Scaffold
+## 19. Exact Recommended Scaffold
 
-Phase 1 should create these directories:
+The scaffold should create these directories:
 
 ```text
 .github/
@@ -731,7 +731,7 @@ tests/fixtures/
 docs/
 ```
 
-Phase 1 should create these files:
+The scaffold should create these files:
 
 ```text
 src/triage_lab/__init__.py
@@ -766,7 +766,7 @@ TESTING_REPORT.md
 PROJECT_COMPLETION_CHECKLIST.md
 ```
 
-Phase 1 should not create:
+The scaffold should not create:
 
 ```text
 .github/workflows/*
@@ -797,23 +797,23 @@ Local JSON alerts
 
 Each stage should expose structured result objects and trace metadata. This keeps behavior inspectable, testable, and suitable for an educational security lab.
 
-## Proposed Phases
+## Proposed Implementation Order
 
-Recommended phase order:
+Recommended capability order:
 
-1. Phase 1: Scaffold and safety foundation.
-2. Phase 2: Ingestion and validation.
-3. Phase 3: Severity classification.
-4. Phase 4: MITRE mapping and explanations.
-5. Phase 5: Triage playbooks.
-6. Phase 6: Incident grouping.
-7. Phase 7: Redaction and reporting.
-8. Phase 8: CLI completion and documentation.
-9. Phase 9: CI, CodeQL, Dependabot, and release workflow.
+1. Scaffold and safety foundation.
+2. Ingestion and validation.
+3. Severity classification.
+4. MITRE mapping and explanations.
+5. Triage playbooks.
+6. Incident grouping.
+7. Redaction and reporting.
+8. CLI completion and documentation.
+9. CI, CodeQL, Dependabot, and release workflow.
 
-## Files and Directories Phase 1 Should Create
+## Files and Directories the Scaffold Should Create
 
-Phase 1 should create the scaffold listed in section 19, with emphasis on:
+The scaffold should create the structure listed in section 19, with emphasis on:
 
 - `pyproject.toml`
 - `src/triage_lab/`
@@ -822,7 +822,7 @@ Phase 1 should create the scaffold listed in section 19, with emphasis on:
 - `tests/`
 - top-level documentation files
 
-Phase 1 should keep implementations minimal and focused on package importability, basic validation, safety constants, and initial testability.
+The scaffold should keep implementations minimal and focused on package importability, basic validation, safety constants, and initial testability.
 
 ## Risks and Design Decisions
 
@@ -843,10 +843,10 @@ Key risks:
 - Ambiguous "AI-assisted" positioning.
 - Adding external integrations too early.
 
-The controls in this plan are sufficient to keep Phase 1 bounded.
+The controls in this plan are sufficient to keep the scaffold bounded.
 
-## Phase 1 Readiness
+## Scaffold Readiness
 
-Phase 1 is ready to start.
+The scaffold scope is ready to start.
 
 The recommended next action is to create the scaffold and minimal safety/model foundation only, without implementing the full triage pipeline and without adding GitHub workflows, tags, releases, or publishing steps.
