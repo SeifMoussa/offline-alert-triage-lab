@@ -1,4 +1,4 @@
-"""JSON alert loading for local Phase 3 validation."""
+"""Local JSON alert loading and validation."""
 
 from __future__ import annotations
 

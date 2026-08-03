@@ -4,10 +4,10 @@ Project name: AI-Assisted Security Alert Triage Lab
 Repository name: offline-alert-triage-lab  
 Package name: triage_lab
 
-Current-status note: this document is the original implementation plan. Subsequent
-implementation milestones delivered the local pipeline, redaction, reporting, local CI
-configuration, CodeQL configuration, Dependabot configuration, and documentation
-safety checks. Hosted GitHub CI, hosted CodeQL, publishing, tags, releases, and
+Current-status note: this document is the original implementation plan. The local
+pipeline, redaction, reporting, local CI configuration, CodeQL configuration,
+Dependabot configuration, and documentation safety checks described below have since
+been delivered. Hosted GitHub CI, hosted CodeQL, publishing, tags, releases, and
 branch protection remain pending until explicit approval.
 
 ## 1. Final Project Scope
@@ -95,7 +95,7 @@ The code should never attempt to contact, scan, enrich, or verify any host, doma
 
 Deliverables:
 
-- `docs/phase-0-plan.md`
+- `docs/design-plan.md`
 
 No source code, workflows, git initialization, tags, releases, or publishing.
 
@@ -636,7 +636,7 @@ Required documentation:
 - `TESTING_REPORT.md`: test commands, coverage summary, known gaps.
 - `docs/release-checklist.md`: current release-readiness requirements.
 - `CHANGELOG.md`: release notes once releases begin.
-- `docs/phase-0-plan.md`: this plan.
+- `docs/design-plan.md`: this plan.
 
 Documentation must consistently state:
 

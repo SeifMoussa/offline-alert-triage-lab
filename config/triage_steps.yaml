@@ -1,6 +1,6 @@
 name: offline-alert-triage-local-playbooks
 version: 1
-status: phase_6_static_triage_playbooks
+status: static_local_config
 description: Local defensive triage step catalog for synthetic alerts.
 safety:
   offline_only: true

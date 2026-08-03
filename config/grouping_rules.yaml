@@ -1,6 +1,6 @@
 name: offline-alert-triage-grouping-rules
 version: 1
-status: phase_7_static_grouping_rules
+status: static_local_config
 description: Local deterministic incident grouping rules for synthetic alerts.
 safety:
   offline_only: true
