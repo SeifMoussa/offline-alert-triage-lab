@@ -51,10 +51,7 @@ def load_run_history(
             errors.append(
                 ParseError(
                     file_path=str(report_path),
-                    message=(
-                        "run directory is missing a "
-                        f"{JSON_REPORT_FILENAME} report file"
-                    ),
+                    message=f"run directory has no {JSON_REPORT_FILENAME} file",
                     error_type="run_report_missing",
                 )
             )

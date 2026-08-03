@@ -68,7 +68,5 @@ def test_load_run_history_records_structured_errors_for_bad_runs() -> None:
     }
     # The run with a bad outcomes file still has a valid report and loads.
     assert any(snapshot.run_id == "run-bad-outcomes" for snapshot in snapshots)
-    bad_outcomes_snapshot = next(
-        s for s in snapshots if s.run_id == "run-bad-outcomes"
-    )
+    bad_outcomes_snapshot = next(s for s in snapshots if s.run_id == "run-bad-outcomes")
     assert bad_outcomes_snapshot.outcomes_available is False
