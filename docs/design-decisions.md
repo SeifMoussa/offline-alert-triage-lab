@@ -60,6 +60,14 @@ as external AI or stochastic generation.
 - Reject unsafe report output paths with the existing local path validator.
 - Configure GitHub workflows, CodeQL, and Dependabot locally only; defer hosted
   verification, tags, releases, branch protection, and publishing.
+- Build trend analytics as a read-only aggregator over local report history
+  instead of adding a database or long-running service. Each run is its own
+  local directory holding the existing redacted `report` JSON output, so no
+  new persistence mechanism is introduced.
+- Compute false-positive rate only from an optional local
+  `triage_outcomes.json` file that an analyst hand-authors per run, and report
+  it as unavailable rather than assumed zero when that file is missing, since
+  nothing else in the pipeline tracks ground-truth disposition.
 
 ## Pending Decisions
 

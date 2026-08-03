@@ -55,6 +55,7 @@ Target roles:
 - Incident grouping and severity rollups.
 - Report-safe redaction and output validation.
 - JSON and Markdown report generation.
+- Multi-run trend analytics over local report history.
 - Python packaging, pytest, coverage gates, Ruff, GitHub Actions, CodeQL, and
   Dependabot configuration.
 
@@ -85,6 +86,9 @@ Implemented stages:
 - Redaction of raw messages, IPs, usernames, sensitive markers, and
   credential-looking patterns before report output.
 - Markdown and JSON reports under `reports/examples`.
+- Trend analytics that read a local directory of prior report runs and
+  aggregate alert volume, top MITRE techniques, and false-positive rate over
+  time. See [docs/trend-analytics.md](docs/trend-analytics.md).
 
 ## Safety Model
 
@@ -136,6 +140,8 @@ python -m triage_lab redact-check --input alerts/sample_alerts.json --format jso
 python -m triage_lab report --input alerts/sample_alerts.json --output reports/examples --format both
 python -m triage_lab report --input alerts/sample_alerts.json --output reports/examples --format json
 python -m triage_lab report --input alerts/sample_alerts.json --output reports/examples --format markdown
+python -m triage_lab trend-report --history-dir history --format json
+python -m triage_lab trend-report --history-dir history --format text
 ```
 
 ## Example Reports
@@ -195,6 +201,7 @@ Key package areas:
 - `grouping`: deterministic incident correlation.
 - `redaction`: report-safe serialization and validation.
 - `reporting`: report models, pipeline, renderers, and writer.
+- `trend_analytics`: local multi-run history loading and trend aggregation.
 
 ## Known Limitations
 

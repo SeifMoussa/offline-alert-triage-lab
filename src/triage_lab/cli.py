@@ -28,6 +28,10 @@ from triage_lab.redaction.serializer import serialize_for_output
 from triage_lab.reporting.pipeline import build_security_report
 from triage_lab.reporting.writer import write_reports
 from triage_lab.safety import PROJECT_DESCRIPTION, safety_summary_text
+from triage_lab.trend_analytics.engine import (
+    build_trend_report,
+    trend_result_is_success,
+)
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -196,6 +200,28 @@ def build_parser() -> argparse.ArgumentParser:
         ),
     )
 
+    trend_parser = subparsers.add_parser(
+        "trend-report",
+        help=(
+            "Aggregate alert volume, MITRE technique, and false-positive-rate "
+            "trends across local triage report runs."
+        ),
+    )
+    trend_parser.add_argument(
+        "--history-dir",
+        required=True,
+        help=(
+            "Local directory containing one subdirectory per triage run, each "
+            "with a security_alert_triage_report.json file."
+        ),
+    )
+    trend_parser.add_argument(
+        "--format",
+        choices=("json", "text"),
+        default="text",
+        help="Output format.",
+    )
+
     return parser
 
 
@@ -314,6 +340,31 @@ def main(argv: list[str] | None = None) -> int:
         }
         print_output(payload, "json", title="Security report")
         return 0 if report.summary.safe_for_output and not report.errors else 1
+    if args.command == "trend-report":
+        try:
+            payload = build_trend_report(args.history_dir)
+        except ValueError as exc:
+            payload = {
+                "history_dir": str(args.history_dir),
+                "run_count": 0,
+                "runs": [],
+                "alert_volume_trend": [],
+                "top_mitre_techniques": [],
+                "false_positive_rate_trend": [],
+                "runs_with_outcomes_file": 0,
+                "runs_with_reviewed_alerts": 0,
+                "average_false_positive_rate": None,
+                "errors": [
+                    {
+                        "file_path": str(args.history_dir),
+                        "message": str(exc),
+                        "error_type": "trend_history_error",
+                    }
+                ],
+            }
+        payload = serialize_for_output(payload).payload
+        print_output(payload, args.format, title="Trend analytics")
+        return 0 if trend_result_is_success(payload) else 1
     return 0
 
 

@@ -1,0 +1,44 @@
+{
+  "metadata": {
+    "deterministic_ai": true,
+    "generated_at": "2026-06-01T00:00:00Z",
+    "input_path": "alerts/sample_alerts.json",
+    "offline_only": true,
+    "project_name": "AI-Assisted Security Alert Triage Lab",
+    "redaction_policy": "default-report-safe-v1",
+    "report_type": "security_alert_triage",
+    "synthetic_data_only": true,
+    "tool_version": "0.1.0"
+  },
+  "redaction_summary": {
+    "credential_patterns_redacted": 0,
+    "fields_redacted": 0,
+    "ip_values_redacted": 0,
+    "markers_redacted": 0,
+    "raw_messages_removed": 0,
+    "redaction_applied": false,
+    "redaction_policy": "default-report-safe-v1",
+    "usernames_redacted": 0
+  },
+  "summary": {
+    "alerts_loaded": 5,
+    "classified_alerts": 5,
+    "explained_alerts": 5,
+    "grouped_alert_count": 5,
+    "highest_alert_severity": "LOW",
+    "highest_incident_severity": "LOW",
+    "incident_count": 0,
+    "malformed_records": 0,
+    "safe_for_output": true,
+    "severity_counts": {
+      "LOW": 5
+    },
+    "tactics_observed": [],
+    "techniques_observed": [],
+    "ungrouped_alert_count": 5
+  },
+  "incidents": [],
+  "explained_alerts": [],
+  "validation_errors": [],
+  "errors": []
+}

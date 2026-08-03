@@ -9,6 +9,7 @@ from triage_lab.models.load_result import LoadResult
 from triage_lab.models.mitre import MitreMappingResult, MitreTechnique
 from triage_lab.models.parse_error import ParseError
 from triage_lab.models.severity import Severity
+from triage_lab.models.trend import RunSnapshot
 from triage_lab.models.triage_step import TriageRecommendation, TriageStep
 
 __all__ = [
@@ -23,6 +24,7 @@ __all__ = [
     "MitreMappingResult",
     "MitreTechnique",
     "ParseError",
+    "RunSnapshot",
     "Severity",
     "TriageRecommendation",
     "TriageStep",

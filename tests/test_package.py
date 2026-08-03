@@ -36,6 +36,7 @@ def test_important_docs_exist() -> None:
         ROOT / "docs" / "testing-guide.md",
         ROOT / "docs" / "release-checklist.md",
         ROOT / "docs" / "portfolio-notes.md",
+        ROOT / "docs" / "trend-analytics.md",
     ]
     missing = [path for path in expected if not path.exists()]
     assert missing == []

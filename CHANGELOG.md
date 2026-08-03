@@ -29,7 +29,12 @@ All notable changes will be documented in this file.
 - Added the full documentation set (schema, configuration, safety model,
   redaction policy, reporting, testing guide, design decisions, release
   checklist) and coverage-hardening tests across config loading, ingestion,
-  classification, MITRE mapping, explanations, triage, and grouping, reaching
-  97.30% total coverage across 256 tests.
+  classification, MITRE mapping, explanations, triage, and grouping.
+- Added a `trend_analytics` module and `trend-report` command that aggregate
+  alert volume, top MITRE techniques, and false-positive rate across a local
+  directory of prior `report` runs, plus an optional local
+  `triage_outcomes.json` disposition file per run. No new persistence
+  mechanism was introduced; trend analytics reads the existing redacted
+  report output.
 
 No release has been published.
