@@ -1,6 +1,6 @@
 name: offline-alert-triage-default-rules
 version: 1
-status: phase_4_classification_config
+status: static_local_config
 description: Local deterministic severity rules for synthetic alert triage.
 safety:
   offline_only: true

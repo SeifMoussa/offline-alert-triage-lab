@@ -1,6 +1,6 @@
 name: offline-alert-triage-local-mitre-mapping
 version: 1
-status: phase_5_static_mitre_mapping
+status: static_local_config
 description: Static local educational MITRE ATT&CK mappings for synthetic alerts.
 safety:
   offline_only: true

@@ -3,8 +3,8 @@
 Release automation is not active. Local GitHub Actions workflow files, CodeQL
 workflow files, Dependabot, and documentation safety checks are configured.
 Hosted GitHub CI and CodeQL have not been verified yet. Branch protection, tags,
-publishing, releases, and release workflow setup require explicit approval in a
-later phase.
+publishing, releases, and release workflow setup require explicit approval before
+they happen.
 
 Before publishing or creating any release:
 
@@ -41,5 +41,5 @@ actually occurs:
 - GitHub Release created.
 - Branch protection configured.
 
-Publishing, tags, and release artifacts require explicit approval in a later
-phase.
+Publishing, tags, and release artifacts require explicit approval before they
+happen.

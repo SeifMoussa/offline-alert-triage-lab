@@ -64,8 +64,8 @@ as external AI or stochastic generation.
 ## Pending Decisions
 
 Publishing, hosted CI verification, hosted CodeQL verification, branch
-protection, tags, releases, and release automation require explicit approval in
-a later phase.
+protection, tags, releases, and release automation require explicit approval
+before they happen.
 
 No pending decision should introduce network calls, live scanning, exploit code,
 or external AI API behavior.

@@ -11,7 +11,7 @@ IMPORTANT_DOCS = (
     "SECURITY.md",
     "TESTING_REPORT.md",
     "CHANGELOG.md",
-    "docs/phase-0-plan.md",
+    "docs/design-plan.md",
     "docs/testing-guide.md",
     "docs/release-checklist.md",
     "docs/reporting.md",

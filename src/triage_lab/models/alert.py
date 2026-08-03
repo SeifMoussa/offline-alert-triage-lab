@@ -17,7 +17,7 @@ from triage_lab.safety import (
 
 
 class AlertRecord(BaseModel):
-    """Validated synthetic alert record for Phase 3 ingestion."""
+    """Validated synthetic alert record used across the ingestion pipeline."""
 
     model_config = ConfigDict(extra="forbid", frozen=True)
 
