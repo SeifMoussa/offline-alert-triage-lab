@@ -18,6 +18,7 @@ IMPORTANT_DOCS = (
     "docs/redaction-policy.md",
     "docs/report-schema.md",
     "docs/safety-model.md",
+    "docs/trend-analytics.md",
 )
 EXAMPLE_REPORTS = (
     "reports/examples/security_alert_triage_report.json",

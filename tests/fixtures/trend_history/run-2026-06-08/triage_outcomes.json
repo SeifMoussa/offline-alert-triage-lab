@@ -1,0 +1,8 @@
+{
+  "alerts": {
+    "alert-0001": "true_positive",
+    "alert-0002": "false_positive",
+    "alert-0003": "true_positive",
+    "alert-0004": "unreviewed"
+  }
+}

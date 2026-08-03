@@ -1,0 +1,57 @@
+{
+  "metadata": {
+    "deterministic_ai": true,
+    "generated_at": "2026-06-15T00:00:00Z",
+    "input_path": "alerts/sample_alerts.json",
+    "offline_only": true,
+    "project_name": "AI-Assisted Security Alert Triage Lab",
+    "redaction_policy": "default-report-safe-v1",
+    "report_type": "security_alert_triage",
+    "synthetic_data_only": true,
+    "tool_version": "0.1.0"
+  },
+  "redaction_summary": {
+    "credential_patterns_redacted": 0,
+    "fields_redacted": 0,
+    "ip_values_redacted": 0,
+    "markers_redacted": 0,
+    "raw_messages_removed": 0,
+    "redaction_applied": false,
+    "redaction_policy": "default-report-safe-v1",
+    "usernames_redacted": 0
+  },
+  "summary": {
+    "alerts_loaded": 22,
+    "classified_alerts": 22,
+    "explained_alerts": 22,
+    "grouped_alert_count": 22,
+    "highest_alert_severity": "CRITICAL",
+    "highest_incident_severity": "CRITICAL",
+    "incident_count": 1,
+    "malformed_records": 0,
+    "safe_for_output": true,
+    "severity_counts": {
+      "CRITICAL": 14,
+      "HIGH": 2,
+      "LOW": 4,
+      "MEDIUM": 2
+    },
+    "tactics_observed": [
+      "Command and Control",
+      "Credential Access",
+      "Discovery",
+      "Exfiltration"
+    ],
+    "techniques_observed": [
+      "T1041",
+      "T1046",
+      "T1071",
+      "T1110"
+    ],
+    "ungrouped_alert_count": 0
+  },
+  "incidents": [],
+  "explained_alerts": [],
+  "validation_errors": [],
+  "errors": []
+}

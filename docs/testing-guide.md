@@ -162,6 +162,21 @@ Reporting tests verify:
   marker constants, credential-looking assignments, or private-key markers.
 - No network calls, external AI/API behavior, or unsafe output.
 
+Trend analytics tests verify:
+
+- Local `triage_outcomes.json` loading, disposition validation, and malformed
+  JSON handling.
+- Local run-history loading, deterministic run ordering, and history
+  directory URL/path-traversal rejection.
+- Structured errors for a missing report file, unreadable/malformed report
+  JSON, a report missing required summary fields, and an invalid outcomes
+  file, without failing the rest of the trend report.
+- Alert-volume trend ordering, top-MITRE-technique ranking, and
+  false-positive-rate averaging over only the runs with reviewed outcomes.
+- `trend-report` JSON/text CLI output and exit codes.
+- No `raw_message`, sensitive marker constants, or network/API-key mentions in
+  trend analytics output.
+
 Automation configuration tests verify:
 
 - `.github/workflows/ci.yml` exists.
