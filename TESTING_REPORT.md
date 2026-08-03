@@ -40,8 +40,9 @@ python -m py_compile scripts/check-docs.py
   security-and-quality queries. Dependabot covers pip and GitHub Actions on a
   weekly schedule.
 
-Hosted GitHub Actions and hosted CodeQL results have not been verified yet because
-the repository has not been published.
+GitHub Actions and CodeQL now run on every pull request to this repository, and
+the Tests, Docs Safety Checks, CLI Smoke, and CodeQL checks have completed
+successfully on recent pull requests.
 
 ## Pending Coverage
 
